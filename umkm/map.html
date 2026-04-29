@@ -1,0 +1,23 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q");
+
+    if (query) {
+        console.log("Search keyword:", query);
+
+        // contoh filter sederhana (nanti disesuaikan data kamu)
+        const items = document.querySelectorAll(".umkm-item");
+
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+
+            if (!text.includes(query.toLowerCase())) {
+                item.style.display = "none";
+            }
+        });
+    }
+
+});
+</script>

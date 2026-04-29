@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UMKM GIS | Mulyoagung</title>
+<!-- Stylesheets -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<!-- Responsive File -->
+<link href="assets/css/responsive.css" rel="stylesheet">
+<!-- Color File -->
+<link href="assets/css/color.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Merriweather:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="shortcut icon" href="assets/images/icongis.png" type="image/x-icon">
+<link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<script src="assets/js/kategori-slider.js"></script>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="loader-wrap">
+        <div class="preloader"><div class="preloader-close">Preloader Close</div></div>
+        <div class="layer layer-one"><span class="overlay"></span></div>
+        <div class="layer layer-two"><span class="overlay"></span></div>        
+        <div class="layer layer-three"><span class="overlay"></span></div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header header-style-one">
+
+        <!-- Header Top -->
+      
+
+   <!-- Header Upper -->
+<div class="header-upper">
+    <div class="auto-container">
+        <div class="inner-container">
+
+            <!-- Logo -->
+            <div class="logo-box">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo_1_gis.png" alt="UMKM Mulyoagung GIS">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nav -->
+            <div class="nav-outer">
+
+                <!-- Mobile Toggle -->
+                <div class="mobile-nav-toggler">
+                    <img src="assets/images/icons/icon-bar-2.png" alt="">
+                </div>
+
+                <!-- Main Menu -->
+                <nav class="main-menu navbar-expand-md navbar-light">
+                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+
+                        <ul class="navigation">
+
+                            <li><a href="index.html">Beranda</a></li>
+
+                            <li><a href="map.html">Tentang</a></li>
+
+                            <li><a href="map.html">Layanan</a></li>
+
+                            <li><a href="data.html">Peta</a></li>
+
+                                <li class="dropdown">
+                                <a href="#">Kategori</a>
+                                <ul>
+                                    <li><a href="#">Kuliner</a></li>
+                                    <li><a href="#">Fashion</a></li>
+                                    <li><a href="#">Jasa</a></li>
+                                    <li><a href="#">Pertanian</a></li>
+                                    <li><a href="#">Kerajinan</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="about.html">Ulasan</a></li>
+
+                            <li><a href="contact.html">Kontak</a></li>
+
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+
+  <!-- Search -->
+<div class="navbar-right">
+    <div class="search-form-two">
+        <form action="map.html" method="GET">
+
+            <input 
+                type="search" 
+                name="q"
+                placeholder="Cari UMKM..."
+                required
+            >
+
+            <button type="submit">
+                <i class="icon-search"></i>
+            </button>
+
+        </form>
+    </div>
+</div>
+<!--End Header Upper-->
+
+<!-- Sticky Header -->
+<div class="sticky-header">
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="inner-container">
+
+                <!-- Logo -->
+                <div class="logo-box">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo_1_gis.png" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nav -->
+                <div class="nav-outer">
+                    <div class="mobile-nav-toggler">
+                        <img src="assets/images/icons/icon-bar-2.png" alt="">
+                    </div>
+
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                    </nav>
+                </div>
+
+                <!-- Sticky Search -->
+                <div class="navbar-right">
+                    <div class="search-form-two">
+                        <form action="map.html" method="GET">
+
+                            <input 
+                                type="search" 
+                                name="q"
+                                placeholder="Cari UMKM..."
+                                required
+                            >
+
+                            <button type="submit">
+                                <i class="icon-search"></i>
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Sticky Header -->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon far fa-times-circle"></span></div>
+            
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="assets/images/logo.png" alt="" title=""></a></div>
+                <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+				<!--Social Links-->
+				<div class="social-links">
+					<ul class="clearfix">
+						<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+						<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+						<li><a href="#"><span class="fab fa-youtube"></span></a></li>
+					</ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+
+        <div class="nav-overlay">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div>
+    </header>
+    <!-- End Main Header -->
+
+    <!--Search Popup-->
+    <div id="search-popup" class="search-popup">
+        <div class="close-search theme-btn"><span class="far fa-times-circle"></span></div>
+        <div class="popup-inner">
+            <div class="overlay-layer"></div>
+            <div class="search-form">
+                <form method="post" action="index.html">
+                    <div class="form-group">
+                        <fieldset>
+                            <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
+                            <input type="submit" value="Search Now!" class="theme-btn">
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- Banner Section -->
+<section class="banner-section">
+    <div class="swiper-container banner-slider">
+        <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide" style="background-image: url(assets/images/main-slider/image-1.png);">
+                <div class="content-outer">
+                    <div class="content-box justify-content-center">
+                        <div class="inner text-center">
+
+                            <h1>Pemetaan Lokasi UMKM Strategis <br> Jalan Utama Mulyoagung</h1>
+
+                            <div class="text">
+                                Menampilkan sebaran UMKM di kawasan Jalan Utama Mulyoagung, Dau, Jawa Timur <br>
+                                untuk membantu menemukan lokasi usaha yang strategis, akurat, dan mudah diakses.
+                            </div>
+
+                            <div class="link-box">
+
+                                <a href="map.html" class="theme-btn btn-style-one">
+                                    <span>Lihat Peta</span>
+                                </a>
+
+                                <a href="map.html" class="theme-btn btn-style-one style-two">
+                                    <span>Pelajari</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide" style="background-image: url(assets/images/main-slider/image-2.png);">
+                <div class="content-outer">
+                    <div class="content-box justify-content-center">
+                        <div class="inner text-center">
+
+                            <h1>Filter Lokasi Berdasarkan <br> Sekolah, Wisata & Keramaian</h1>
+
+                            <div class="text">
+                                Temukan UMKM berdasarkan area strategis di Mulyoagung seperti sekolah, wisata, <br>
+                                dan pusat keramaian untuk melihat potensi pasar yang lebih tepat sasaran.
+                            </div>
+
+                            <div class="link-box">
+                                <a href="map.html" class="theme-btn btn-style-one">
+                                    <span>Lihat Peta</span>
+                                </a>
+                                <a href="map.html" class="theme-btn btn-style-one style-two">
+                                    <span>Pelajari</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide" style="background-image: url(assets/images/main-slider/image-3.png);">
+                <div class="content-outer">
+                    <div class="content-box justify-content-center">
+                        <div class="inner text-center">
+
+                            <h1>Kategori UMKM & Analisis <br> Potensi Usaha Desa Mulyoagung</h1>
+
+                            <div class="text">
+                                Sistem ini mengelompokkan UMKM berdasarkan kategori usaha di Mulyoagung <br>
+                                untuk membantu pengembangan bisnis yang lebih terarah dan berbasis data.
+                            </div>
+
+                            <div class="link-box">
+                                <a href="map.html" class="theme-btn btn-style-one">
+                                    <span>Lihat Peta</span>
+                                </a>
+                                <a href="map.html" class="theme-btn btn-style-one style-two">
+                                    <span>Pelajari</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="banner-slider-nav">
+        <div class="banner-slider-control banner-slider-button-prev">
+            <span><i class="icon-arrow"></i></span>
+        </div>
+        <div class="banner-slider-control banner-slider-button-next">
+            <span><i class="icon-arrow"></i></span>
+        </div>
+    </div>
+</section>
+<!-- About section -->
+<section class="about-section">
+    <div class="auto-container">
+
+        <div class="sec-title text-center">
+            <div class="sub-title">Digitalisasi UMKM & Potensi Wilayah Desa</div>
+            <h2>Peta UMKM, Informasi Lokasi <br> & Analisis Potensi Jalan Utama Mulyoagung</h2>
+        </div>
+
+        <div class="row">
+
+            <!-- LEFT CONTENT -->
+            <div class="col-lg-5">
+                <div class="content-block wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                    <h3>UMKM Mulyoagung <strong>GIS</strong></h3>
+
+                    <div class="text">
+                        Sistem ini dikembangkan untuk memetakan dan mengelola data UMKM di kawasan
+                        Jalan Utama Mulyoagung, Dau, Jawa Timur. Tujuannya adalah membantu masyarakat
+                        dan pelaku usaha dalam menemukan lokasi strategis serta memahami potensi wilayah
+                        secara lebih cepat, akurat, dan berbasis data digital.
+                    </div>
+
+                    <ul class="list">
+                        <li>Pemetaan UMKM berbasis lokasi GPS dan GIS</li>
+                        <li>Informasi wilayah strategis secara real-time</li>
+                        <li>Dukungan pengembangan ekonomi lokal desa</li>
+                        <li>Akses data UMKM yang lebih transparan & terstruktur</li>
+                    </ul>
+
+                    <div class="bottom-content">
+                        <div class="text">
+                            Punya pertanyaan atau ingin berkolaborasi? <br> Hubungi kami sekarang
+                        </div>
+
+                        <ul class="contact-link">
+                            <li><a href="#"><i class="icon-phone"></i></a></li>
+                            <li><a href="#"><i class="icon-envelope"></i></a></li>
+                            <li><a href="contact.html"><i class="icon-placeholder"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT IMAGES -->
+            <div class="col-lg-7">
+                <div class="image-block wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                    <div class="row">
+
+                        <div class="col-lg-6 column">
+                            <div class="image">
+                                <img src="assets/images/resource/image-1.png" alt="UMKM Kuliner">
+                            </div>
+                            <div class="image">
+                                <img src="assets/images/resource/image-2.png" alt="UMKM Fashion">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 column">
+                            <div class="image">
+                                <img src="assets/images/resource/image-3.png" alt="UMKM Jasa">
+                            </div>
+                            <div class="image">
+                                <img src="assets/images/resource/image-4.png" alt="UMKM Pertanian">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+   <!-- Funfacts Section -->
+<!-- Funfacts Section -->
+<section class="funfacts-section" style="background-image: url(assets/images/background/bg-1.png);">
+    <div class="auto-container">
+
+        <div class="row funfacts-row">
+
+            <!-- Column 1 -->
+            <div class="column counter-column col-lg-3 col-md-6 col-sm-6">
+                <div class="inner">
+                    <div class="icon-outer">
+                        <div class="icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text">Kategori UMKM</div>
+                        <div class="count-outer count-box">
+                            <span class="count-text" data-stop="8">0</span>
+                            <span> Kategori</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="column counter-column col-lg-3 col-md-6 col-sm-6">
+                <div class="inner">
+                    <div class="icon-outer">
+                        <div class="icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text">Jumlah UMKM</div>
+                        <div class="count-outer count-box">
+                            <span class="count-text" data-stop="150">0</span>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="column counter-column col-lg-3 col-md-6 col-sm-6">
+                <div class="inner">
+                    <div class="icon-outer">
+                        <div class="icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text">Area Strategis</div>
+                        <div class="count-outer count-box">
+                            <span class="count-text" data-stop="12">0</span>
+                            <span> Lokasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="column counter-column col-lg-3 col-md-6 col-sm-6">
+                <div class="inner">
+                    <div class="icon-outer">
+                        <div class="icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text">Luas Area</div>
+                        <div class="count-outer count-box">
+                            <span class="count-text">2.34</span>
+                            <span>KM2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- Program UMKM Section -->
+<section class="city-program-section" style="background-image: url(assets/images/background/bg-2.jpg);">
+    <div class="auto-container">
+
+        <div class="sec-title text-center">
+            <div class="sub-title">Sistem Informasi Geografis UMKM Desa Mulyoagung</div>
+            <h2>Fitur Utama Platform</h2>
+        </div>
+
+        <div class="row justify-content-center">
+
+            <!-- 1. Pemetaan UMKM -->
+            <div class="col-lg-4 col-md-6 program-block">
+                <div class="inner-box text-center">
+
+                    <div class="icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+
+                    <div class="category">Peta Digital</div>
+
+                    <h4>Pemetaan UMKM</h4>
+
+                    <p>
+                        Menampilkan lokasi UMKM di Jalan Utama Mulyoagung secara interaktif berbasis peta digital.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- 2. Kategori UMKM -->
+            <div class="col-lg-4 col-md-6 program-block">
+                <div class="inner-box text-center">
+
+                    <div class="icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+
+                    <div class="category">Kategori</div>
+
+                    <h4>Klasifikasi UMKM</h4>
+
+                    <p>
+                        Pengelompokan UMKM berdasarkan jenis usaha seperti kuliner, fashion, dan jasa.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- 3. Area Strategis -->
+            <div class="col-lg-4 col-md-6 program-block">
+                <div class="inner-box text-center">
+
+                    <div class="icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+
+                    <div class="category">Analisis Lokasi</div>
+
+                    <h4>Area Strategis</h4>
+
+                    <p>
+                        Menentukan wilayah potensial UMKM berdasarkan aktivitas dan keramaian warga.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Map Preview Section -->
+<section class="map-preview-section">
+    <div class="auto-container">
+        <div class="row align-items-center">
+
+            <!-- MAP -->
+            <div class="col-lg-7">
+                <div class="map-box">
+                    <iframe 
+                        src="https://www.google.com/maps?q=Jalan+Utama+Mulyoagung+Dau+Malang&output=embed"
+                        width="100%" 
+                        height="420" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="col-lg-5">
+                <div class="content-block">
+
+                    <div class="sec-title">
+                        <div class="sub-title">Peta UMKM Mulyoagung</div>
+                        <h2>Persebaran UMKM di Jalan Utama</h2>
+                    </div>
+
+                    <div class="text">
+                        <p>
+                            Lihat lokasi UMKM di kawasan Jalan Utama Mulyoagung, Dau, Jawa Timur
+                            dalam satu peta interaktif untuk memahami potensi dan sebaran usaha.
+                        </p>
+                    </div>
+
+                    <div class="btn-box">
+                        <a href="map.html" class="theme-btn btn-style-one">
+                            Buka Peta
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <!-- Highlights section -->
+<section class="highlights-section">
+    <div class="auto-container">
+
+        <div class="sec-title">
+            <div class="big-title">UMKM Mulyoagung</div>
+            <div class="sub-title">Kategori Usaha - Area Strategis - Potensi Lokasi</div>
+            <h2>Kategori UMKM <br> Desa Mulyoagung</h2>
+        </div>
+
+        <div class="highlight-block-area">
+            <div class="row">
+
+                <!-- LEFT CONTENT -->
+                <div class="col-lg-7">
+
+                    <div class="text-blcok">
+
+                        <h4 id="kategori-title">UMKM Kuliner</h4>
+
+                        <div class="text" id="kategori-desc">
+                            Menampilkan kategori usaha UMKM di Jalan Utama Mulyoagung seperti kuliner,
+                            fashion, jasa, pertanian, dan kerajinan dalam bentuk visual interaktif.
+                        </div>
+
+                        <div class="link-btn">
+                            <a href="map.html?kategori=kuliner"
+                               class="theme-btn btn-style-one"
+                               id="kategori-btn">
+
+                                <span id="kategori-btn-text">
+                                    Lihat UMKM Kuliner
+                                </span>
+
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- THUMB SLIDER -->
+                    <div class="swiper-container highlight-thumbs">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="assets/images/resource/image-9.jpg" alt="Kuliner">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="assets/images/resource/image-10.jpg" alt="Fashion">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="assets/images/resource/image-11.jpg" alt="Jasa">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="assets/images/resource/image-12.jpg" alt="Pertanian">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="assets/images/resource/image-13.jpg" alt="Kerajinan">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- NAV -->
+                    <div class="highlight-slider-nav">
+                        <div class="highlight-slider-control highlight-slider-button-prev">
+                            <span><i class="icon-arrow"></i></span>
+                        </div>
+
+                        <div class="highlight-slider-control highlight-slider-button-next">
+                            <span><i class="icon-arrow"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT IMAGE -->
+                <div class="col-lg-5">
+                    <div class="swiper-container highlight-image">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="image">
+                                    <img src="assets/images/resource/image-9.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="image">
+                                    <img src="assets/images/resource/image-10.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="image">
+                                    <img src="assets/images/resource/image-11.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="image">
+                                    <img src="assets/images/resource/image-12.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="image">
+                                    <img src="assets/images/resource/image-13.jpg" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Testimonials section -->
+<section class="testimonials-section">
+
+    <div class="auto-container">
+        <div class="row">
+
+            <div class="theme_carousel owl-theme owl-carousel"
+                data-options='{
+                "loop": true,
+                "margin": 0,
+                "autoheight": true,
+                "nav": true,
+                "dots": true,
+                "autoplay": true,
+                "autoplayTimeout": 5000,
+                "smartSpeed": 900,
+                "responsive": {
+                    "0": { "items": 1 },
+                    "600": { "items": 1 },
+                    "768": { "items": 2 },
+                    "992": { "items": 3 },
+                    "1200": { "items": 3 }
+                }
+            }'>
+
+                <!-- TESTIMONI 1 -->
+                <div class="col-lg-12 testimonial-block">
+                    <div class="inner-box">
+
+                        <div class="content">
+                            <div class="text">
+                                “Peta UMKM Mulyoagung bikin usaha saya lebih mudah ditemukan oleh pelanggan di sekitar Jalan Utama.”
+                            </div>
+
+                            <div class="rating">
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                            </div>
+
+                            <div class="quote"><span class="icon-quote"></span></div>
+                        </div>
+
+                        <div class="author">
+                            <div class="thumb">
+                                <img src="assets/images/resource/author-1.jpg" alt="">
+                            </div>
+                            <h4>Ibu Sari</h4>
+                            <div class="designation">UMKM Kuliner</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TESTIMONI 2 -->
+                <div class="col-lg-12 testimonial-block">
+                    <div class="inner-box">
+
+                        <div class="content">
+                            <div class="text">
+                                “Dengan sistem ini, lokasi usaha saya lebih mudah dikenal warga Mulyoagung dan sekitarnya.”
+                            </div>
+
+                            <div class="rating">
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                            </div>
+
+                            <div class="quote"><span class="icon-quote"></span></div>
+                        </div>
+
+                        <div class="author">
+                            <div class="thumb">
+                                <img src="assets/images/resource/author-2.jpg" alt="">
+                            </div>
+                            <h4>Bapak Andi</h4>
+                            <div class="designation">UMKM Fashion</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TESTIMONI 3 -->
+                <div class="col-lg-12 testimonial-block">
+                    <div class="inner-box">
+
+                        <div class="content">
+                            <div class="text">
+                                “Sekarang warga lebih mudah menemukan layanan jasa seperti bengkel dan laundry lewat peta UMKM ini.”
+                            </div>
+
+                            <div class="rating">
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                                <span class="fas fa-star"></span>
+                            </div>
+
+                            <div class="quote"><span class="icon-quote"></span></div>
+                        </div>
+
+                        <div class="author">
+                            <div class="thumb">
+                                <img src="assets/images/resource/author-3.jpg" alt="">
+                            </div>
+                            <h4>Rudi Hartono</h4>
+                            <div class="designation">UMKM Jasa</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Contact Info section -->
+<section class="contact-info-section">
+    <div class="auto-container">
+        <div class="wrapper-box" style="background-image: url(assets/images/background/bg-4.png);">
+
+            <div class="top-content">
+                <h2>Butuh Informasi UMKM?</h2>
+                <div class="text">
+                    Sistem Informasi Geografis UMKM Mulyoagung membantu Anda menemukan lokasi usaha, kategori UMKM, dan potensi wilayah di Jalan Utama Mulyoagung dengan cepat dan akurat.
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- CALL -->
+                <div class="col-lg-3 col-md-6 contact-info-block">
+                    <div class="inner-box">
+                        <div class="icon"><span class="pe-7s-call"></span></div>
+                        <h5>Telepon</h5>
+                        <h4><a href="tel:+6281234567890">+62 812-3456-7890</a></h4>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="col-lg-3 col-md-6 contact-info-block">
+                    <div class="inner-box">
+                        <div class="icon"><span class="pe-7s-mail-open"></span></div>
+                        <h5>Email</h5>
+                        <h4><a href="mailto:gis@mulyoagung.id">gis@mulyoagung.id</a></h4>
+                    </div>
+                </div>
+
+                <!-- LOCATION / DESA -->
+                <div class="col-lg-3 col-md-6 contact-info-block">
+                    <div class="inner-box">
+                        <div class="icon"><span class="pe-7s-map-marker"></span></div>
+                        <h5>Lokasi</h5>
+                        <h4>Jalan Utama Mulyoagung</h4>
+                    </div>
+                </div>
+
+                <!-- JAM OPERASIONAL -->
+                <div class="col-lg-3 col-md-6 contact-info-block">
+                    <div class="inner-box">
+                        <div class="icon"><span class="pe-7s-clock"></span></div>
+                        <h5>Akses Sistem</h5>
+                        <h4>24 Jam Online</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <div class="auto-container">
+
+        <div class="sec-title text-center">
+            <div class="sub-title">Informasi UMKM</div>
+            <h2>FAQ (Pertanyaan Umum)</h2>
+        </div>
+
+        <div class="faq-wrapper">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <div class="faq-question">Apa itu sistem UMKM Mulyoagung ini?</div>
+                <div class="faq-answer">
+                    Sistem ini adalah peta digital UMKM di Jalan Utama Mulyoagung berbasis GIS untuk menampilkan lokasi dan data usaha.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-question">Kategori UMKM apa saja yang tersedia?</div>
+                <div class="faq-answer">
+                    Tersedia kategori seperti kuliner, fashion, jasa, pertanian, dan kerajinan.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-question">Apakah UMKM bisa dilihat di peta?</div>
+                <div class="faq-answer">
+                    Bisa, semua lokasi UMKM dapat diakses melalui peta interaktif berdasarkan kategori.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <div class="faq-question">Siapa yang mengelola datanya?</div>
+                <div class="faq-answer">
+                    Data dikelola bersama perangkat desa dan hasil pendataan lapangan secara berkala.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <div class="faq-question">Apakah data selalu diperbarui?</div>
+                <div class="faq-answer">
+                    Ya, data diperbarui secara berkala mengikuti perkembangan UMKM di Mulyoagung.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- Main  Footer -->
+<!-- Main Footer -->
+<footer class="main-footer">
+
+    <!-- FOOTER TOP -->
+    <div class="footer-top">
+        <div class="auto-container">
+            <div class="row align-items-center">
+
+                <div class="col-lg-3">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="assets/images/logo-2.png" alt="UMKM Mulyoagung GIS">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="wrapper-box">
+                        <h4>Update UMKM Mulyoagung</h4>
+
+                        <div class="newsletter-form">
+                            <form class="ajax-sub-form" method="post">
+                                <div class="form-group">
+                                    <input type="email" placeholder="Masukkan email untuk update UMKM..." id="subscription-email">
+                                    <button type="submit" class="theme-btn">
+                                        <i class="icon-arrow"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- WIDGETS -->
+    <div class="auto-container">
+        <div class="widgets-section">
+            <div class="row clearfix">
+
+                <!-- ABOUT -->
+                <div class="column col-lg-3 col-md-6">
+                    <div class="widget about-widget">
+                        <h3 class="widget-title">Tentang Sistem</h3>
+
+                        <div class="text">
+                            Sistem Informasi Geografis UMKM Desa Mulyoagung digunakan untuk memetakan
+                            dan menganalisis persebaran usaha di sepanjang Jalan Utama Mulyoagung,
+                            Kecamatan Dau, Kabupaten Malang, Jawa Timur.
+                            Sistem ini mendukung digitalisasi UMKM lokal berbasis data spasial.
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- FITUR -->
+                <div class="column col-lg-3 col-md-6">
+                    <div class="widget links-widget">
+                        <h3 class="widget-title">Fitur</h3>
+                        <ul>
+                            <li><a href="map.html">Peta UMKM Interaktif</a></li>
+                            <li><a href="map.html">Kategori Usaha</a></li>
+                            <li><a href="data.html">Data & Statistik</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- INFORMASI -->
+                <div class="column col-lg-3 col-md-6">
+                    <div class="widget links-widget">
+                        <h3 class="widget-title">Informasi</h3>
+                        <ul>
+                            <li><a href="#about">Tentang Mulyoagung</a></li>
+                            <li><a href="contact.html">Kontak Admin</a></li>
+                            <li><a href="#">Kebijakan Data</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KONTAK -->
+                <div class="column col-lg-3 col-md-6">
+                    <div class="widget contact-widget">
+                        <h3 class="widget-title">Kontak Kami</h3>
+
+                        <ul class="contact-info">
+
+                            <li>
+                                <div class="icon">
+                                    <img src="assets/images/icons/icon-1.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <strong>Lokasi</strong>
+                                    Jalan Utama Mulyoagung, Dau, Malang, Jawa Timur
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="icon">
+                                    <img src="assets/images/icons/icon-2.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <strong>Telepon</strong>
+                                    <a href="tel:+6281234567890">+62 812-3456-7890</a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="icon">
+                                    <img src="assets/images/icons/icon-3.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <strong>Email</strong>
+                                    <a href="mailto:admin@umkm-mulyoagung.id">admin@umkm-mulyoagung.id</a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="wrapper-box">
+                <div class="copyright">
+                    © 2026 <a href="index.html">UMKM Mulyoagung GIS</a> - Jalan Utama Mulyoagung, Dau, Jawa Timur
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon-arrow"></span></div>
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap-select.min.js"></script>
+<script src="assets/js/jquery.fancybox.js"></script>
+<script src="assets/js/isotope.js"></script>
+<script src="assets/js/owl.js"></script>
+<script src="assets/js/appear.js"></script>
+<script src="assets/js/wow.js"></script>
+<script src="assets/js/lazyload.js"></script>
+<script src="assets/js/scrollbar.js"></script>
+<script src="assets/js/TweenMax.min.js"></script>
+<script src="assets/js/swiper.min.js"></script>
+<script src="assets/js/jquery.polyglot.language.switcher.js"></script>
+<script src="assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="assets/js/parallax-scroll.js"></script>
+
+<script src="assets/js/script.js"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
