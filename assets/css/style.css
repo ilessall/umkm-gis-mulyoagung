@@ -2200,6 +2200,12 @@ img {
     width: 47px;
 }
 
+.main-footer .auto-container {
+    max-width: 1300px;   /* sesuaikan dengan header  */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 /* About Widget */
 .about-widget .text {
     position: relative;

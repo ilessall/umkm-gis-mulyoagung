@@ -3,33 +3,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const kategoriData = [
         {
             title: "UMKM Kuliner",
-            desc: "Menampilkan usaha kuliner seperti warung makan, cafe, dan jajanan lokal di Desa Mulyoagung. Informasi ini membantu melihat lokasi dan peluang usaha.",
+            desc: "Menampilkan usaha kuliner seperti warung makan, cafe, dan jajanan lokal di Desa Mulyoagung.",
             button: "Lihat UMKM Kuliner",
-            link: "map.html?kategori=kuliner"
+            link: "map.html?kategori=Kuliner"
         },
         {
             title: "UMKM Fashion",
-            desc: "Menampilkan usaha fashion seperti butik, konveksi, dan toko pakaian lokal di Desa Mulyoagung. Data ini membantu melihat potensi dan persebaran usaha kreatif.",
+            desc: "Menampilkan usaha fashion seperti butik, konveksi, dan toko pakaian lokal.",
             button: "Lihat UMKM Fashion",
-            link: "map.html?kategori=fashion"
+            link: "map.html?kategori=Fashion"
         },
         {
             title: "UMKM Jasa",
-            desc: "Menampilkan usaha jasa seperti laundry, salon, bengkel, dan layanan masyarakat di Desa Mulyoagung. Informasi ini mendukung pemetaan aktivitas ekonomi lokal.",
+            desc: "Menampilkan usaha jasa seperti laundry, salon, bengkel.",
             button: "Lihat UMKM Jasa",
-            link: "map.html?kategori=jasa"
+            link: "map.html?kategori=Jasa"
         },
         {
             title: "UMKM Pertanian",
-            desc: "Menampilkan usaha pertanian seperti hasil tani, peternakan, dan produk unggulan desa Mulyoagung. Data ini menunjukkan potensi sektor agribisnis lokal.",
+            desc: "Menampilkan usaha pertanian dan hasil tani lokal.",
             button: "Lihat UMKM Pertanian",
-            link: "map.html?kategori=pertanian"
+            link: "map.html?kategori=Pertanian"
         },
         {
             title: "UMKM Kerajinan",
-            desc: "Menampilkan usaha kerajinan tangan, produk kreatif, dan souvenir lokal di Desa Mulyoagung. Informasi ini membantu melihat potensi ekonomi kreatif desa.",
+            desc: "Menampilkan usaha kerajinan tangan dan produk kreatif.",
             button: "Lihat UMKM Kerajinan",
-            link: "map.html?kategori=kerajinan"
+            link: "map.html?kategori=Kerajinan"
         }
     ];
 
@@ -39,39 +39,38 @@ document.addEventListener("DOMContentLoaded", function () {
     const btn = document.getElementById("kategori-btn");
     const btnText = document.getElementById("kategori-btn-text");
 
-    if (!thumbs.length || !title || !desc || !btn || !btnText) return;
-
     function updateContent(index) {
         const data = kategoriData[index];
-
         if (!data) return;
 
-        title.innerText = data.title || "";
-        desc.innerText = data.desc || "";
-        btnText.innerText = data.button || "Lihat";
-        btn.href = data.link || "#";
+        title.innerText = data.title;
+        desc.innerText = data.desc;
+        btnText.innerText = data.button;
+        btn.href = data.link;
 
-        // optional active class
         thumbs.forEach(t => t.classList.remove("active"));
         thumbs[index]?.classList.add("active");
     }
 
-    // click handler
+    // klik thumbnail
     thumbs.forEach((thumb, index) => {
         thumb.addEventListener("click", function () {
             updateContent(index);
         });
     });
 
+    // 🔥 SYNC DENGAN SWIPER
+    setTimeout(() => {
+        var swiperMain = document.querySelector('.highlight-image')?.swiper;
+
+        if (swiperMain) {
+            swiperMain.on('slideChange', function () {
+                updateContent(swiperMain.activeIndex);
+            });
+        }
+    }, 300);
+
     // init pertama
     updateContent(0);
 
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".faq-question").forEach(item => {
-        item.addEventListener("click", () => {
-            item.parentElement.classList.toggle("active");
-        });
-    });
 });
