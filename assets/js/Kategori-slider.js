@@ -160,3 +160,27 @@ function applyFilter() {
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => applyFilter(), 500);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+        const question = item.querySelector(".faq-question");
+
+        question.addEventListener("click", function () {
+
+            // kalau mau hanya 1 yang open (accordion style)
+            faqItems.forEach(el => {
+                if (el !== item) {
+                    el.classList.remove("active");
+                }
+            });
+
+            // toggle current
+            item.classList.toggle("active");
+
+        });
+    });
+
+});

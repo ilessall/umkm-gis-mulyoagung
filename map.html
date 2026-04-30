@@ -882,6 +882,46 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 </script>
+
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+const isPreview = urlParams.get("preview") === "1";
+
+if (isPreview) {
+
+    // sembunyikan semua UI selain map container
+    const hideElements = [
+        ".main-header",
+        ".header",
+        ".page-title",
+        ".breadcrumb",
+        ".search-popup",
+        ".sidebar",
+        ".footer"
+    ];
+
+    hideElements.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.style.display = "none";
+        });
+    });
+
+    // pastikan hanya map yang tampil full
+    const mapContainer = document.getElementById("map");
+    if (mapContainer) {
+        mapContainer.style.position = "absolute";
+        mapContainer.style.top = "0";
+        mapContainer.style.left = "0";
+        mapContainer.style.width = "100%";
+        mapContainer.style.height = "100vh";
+    }
+
+    // hilangkan margin body
+    document.body.style.margin = "0";
+    document.body.style.overflow = "hidden";
+}
+</script>
  </body>
 </html>
 
