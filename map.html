@@ -163,34 +163,9 @@
             text-align: center;
         }
 
-        /* default hidden */
-.sticky-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    display: none;
-    background: #fff;
-}
-
-/* saat aktif */
-.sticky-header.active {
-    display: block;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}.sticky-header {
-    position: fixed;
-    top: -120px; /* sembunyi di atas */
-    width: 100%;
-    z-index: 9999;
-    background: #fff;
-    transition: all 0.3s ease;
-}
-
-/* saat aktif */
-.sticky-header.active {
-    top: 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+      /* =========================
+   STICKY HEADER FIXED
+========================= */
 
 </style>
 
@@ -198,7 +173,7 @@
     </head>
     <body>
    
-    </body>
+   
 
 
 
@@ -234,33 +209,46 @@
                 <nav class="main-menu navbar-expand-md navbar-light">
                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
 
-                        <ul class="navigation">
+                       <ul class="navigation">
 
-                            <li><a href="#">Beranda</a></li>
+    <li><a href="index.html">Beranda</a></li>
 
-                            <li><a href="#tentang">Tentang</a></li>
+    <li><a href="index.html#tentang">Tentang</a></li>
 
-                            <li><a href="#layanan">Layanan</a></li>
+    <li><a href="index.html#layanan">Layanan</a></li>
 
-                            <li><a href="#peta">Peta</a></li>
+    <li><a href="index.html#peta">Peta</a></li>
 
-                                <li class="dropdown">
-                                <a href="#kategori">Kategori</a>
-                                <ul>
-                                    <li><a href="#">Kuliner</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Jasa</a></li>
-                                    <li><a href="#">Pertanian</a></li>
-                                    <li><a href="#">Kerajinan</a></li>
-                                </ul>
-                            </li>
+    <li class="dropdown">
+        <a href="index.html#kategori">Kategori</a>
+        <ul>
 
-                            <li><a href="#ulasan">Ulasan</a></li>
+        <li><a href="map.html?kategori=Kuliner">🍔 Kuliner</a></li>
 
-                            <li><a href="#kontak">Kontak</a></li>
-                            <li><a href="#pertanyaan">Pertanyaan</a></li>
+        <li><a href="map.html?kategori=Fashion">👕 Fashion</a></li>
 
-                        </ul>
+        <li><a href="map.html?kategori=Jasa">🛠️ Jasa</a></li>
+
+        <li><a href="map.html?kategori=Otomotif">🔧 Otomotif</a></li>
+
+        <li><a href="map.html?kategori=Kesehatan">🏥 Kesehatan</a></li>
+
+        <li><a href="map.html?kategori=Retail">🛒 Retail</a></li>
+
+        <li><a href="map.html?kategori=Elektronik">💻 Elektronik</a></li>
+
+        <li><a href="map.html?kategori=All">📍 Semua UMKM</a></li>
+
+    </ul>
+    </li>
+
+    <li><a href="index.html#ulasan">Ulasan</a></li>
+
+    <li><a href="index.html#kontak">Kontak</a></li>
+
+    <li><a href="index.html#pertanyaan">Pertanyaan</a></li>
+
+</ul>
 
                     </div>
                 </nav>
@@ -309,7 +297,50 @@
                     </div>
 
                     <nav class="main-menu navbar-expand-md navbar-light">
-                    </nav>
+    <div class="collapse navbar-collapse show clearfix">
+
+    <ul class="navigation">
+
+    <li><a href="index.html">Beranda</a></li>
+
+    <li><a href="index.html#tentang">Tentang</a></li>
+
+    <li><a href="index.html#layanan">Layanan</a></li>
+
+    <li><a href="index.html#peta">Peta</a></li>
+
+    <li class="dropdown">
+        <a href="index.html#kategori">Kategori</a>
+         <ul>
+
+        <li><a href="map.html?kategori=Kuliner">🍔 Kuliner</a></li>
+
+        <li><a href="map.html?kategori=Fashion">👕 Fashion</a></li>
+
+        <li><a href="map.html?kategori=Jasa">🛠️ Jasa</a></li>
+
+        <li><a href="map.html?kategori=Otomotif">🔧 Otomotif</a></li>
+
+        <li><a href="map.html?kategori=Kesehatan">🏥 Kesehatan</a></li>
+
+        <li><a href="map.html?kategori=Retail">🛒 Retail</a></li>
+
+        <li><a href="map.html?kategori=Elektronik">💻 Elektronik</a></li>
+
+        <li><a href="map.html?kategori=All">📍 Semua UMKM</a></li>
+
+    </ul>
+    </li>
+
+    <li><a href="index.html#ulasan">Ulasan</a></li>
+
+    <li><a href="index.html#kontak">Kontak</a></li>
+
+    <li><a href="index.html#pertanyaan">Pertanyaan</a></li>
+
+</ul>
+    </div>
+</nav>
                 </div>
 
                 <!-- Sticky Search -->
@@ -408,7 +439,7 @@
     </div>
 
     <!-- SELECT ASLI (tetap dipakai JS kamu) -->
-    <select id="kategori-select" >
+    <!-- <select id="kategori-select" >
         <option value="All">Semua</option>
         <option value="Kuliner">Kuliner</option>
         <option value="Retail">Retail</option>
@@ -417,7 +448,7 @@
         <option value="Jasa">Jasa</option>
         <option value="Elektronik">Elektronik</option>
         <option value="Fashion">Fashion</option>
-    </select>
+    </select> -->
 
 </div>
 
@@ -574,89 +605,50 @@
 </div>
 <!--End pagewrapper-->
 
+<!-- =========================
+     LIBRARIES (TIDAK DIUBAH)
+========================= -->
+<script src="resources/qgis2web_expressions.js"></script>
+<script src="./resources/functions.js"></script>
+<script src="./resources/ol.js"></script>
+<script src="resources/horsey.min.js"></script>
+<script src="resources/ol-search-layer.js"></script>
+<script src="./resources/ol-layerswitcher.js"></script>
+<script src="resources/photon-geocoder-autocomplete.min.js"></script>
 
-   <script src="resources/qgis2web_expressions.js"></script>
-        <script src="./resources/functions.js"></script>
-        <script src="./resources/ol.js"></script>
-        <script src="resources/horsey.min.js"></script>
-        <script src="resources/ol-search-layer.js"></script>
-        <script src="./resources/ol-layerswitcher.js"></script>
-        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
-        <script src="layers/AreaDesaMulyoAgung_1.js"></script><script src="layers/JalanUtama_2.js"></script><script src="layers/LokasiTempatIbadah_3.js"></script><script src="layers/LokasiSekolah_4.js"></script><script src="layers/LokasiBisnisMulyoAgung_5.js"></script>
-        <script src="styles/AreaDesaMulyoAgung_1_style.js"></script><script src="styles/JalanUtama_2_style.js"></script><script src="styles/LokasiTempatIbadah_3_style.js"></script><script src="styles/LokasiSekolah_4_style.js"></script><script src="styles/LokasiBisnisMulyoAgung_5_style.js"></script>
-        <script src="./layers/layers.js" type="text/javascript"></script> 
-        <script src="./resources/Autolinker.min.js"></script>
-        <script src="./resources/qgis2web.js"></script>  
-        <script>
+<script src="layers/AreaDesaMulyoAgung_1.js"></script>
+<script src="layers/JalanUtama_2.js"></script>
+<script src="layers/LokasiTempatIbadah_3.js"></script>
+<script src="layers/LokasiSekolah_4.js"></script>
+<script src="layers/LokasiBisnisMulyoAgung_5.js"></script>
+
+<script src="styles/AreaDesaMulyoAgung_1_style.js"></script>
+<script src="styles/JalanUtama_2_style.js"></script>
+<script src="styles/LokasiTempatIbadah_3_style.js"></script>
+<script src="styles/LokasiSekolah_4_style.js"></script>
+<script src="styles/LokasiBisnisMulyoAgung_5_style.js"></script>
+
+<script src="./layers/layers.js"></script>
+<script src="./resources/Autolinker.min.js"></script>
+<script src="./resources/qgis2web.js"></script>
 
 
-    // 1. Ambil elemen dropdown
-    var filterSelect = document.getElementById('kategori-select');
-
-    // 2. Fungsi Filter
-    filterSelect.onchange = function() {
-        var selectedValue = this.value;
-        
-        // lyr_LokasiBisnisMulyoAgung_5 adalah nama variabel layer di OpenLayers kamu
-        var source = lyr_LokasiBisnisMulyoAgung_5.getSource();
-        var features = source.getFeatures();
-
-        features.forEach(function(feature) {
-            // Kita ambil atribut 'kategori' dari data GeoJSON kamu
-            var kategoriData = feature.get('kategori');
-
-            if (selectedValue === 'All') {
-                // Tampilkan kembali semua titik jika pilih "Semua"
-                feature.setStyle(undefined); 
-            } else {
-                if (kategoriData && kategoriData.toLowerCase() === selectedValue.toLowerCase()) {
-                    // Tampilkan yang cocok
-                    feature.setStyle(undefined); 
-                } else {
-                    // Sembunyikan yang tidak cocok dengan style transparan
-                    feature.setStyle(new ol.style.Style({})); 
-                }
-            }
-        });
-    };
-</script>    
-
+<!-- =========================
+     1. MAP OVERLAY LOCK
+========================= -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const query = params.get("q");
-
-    if (query) {
-        console.log("Search keyword:", query);
-
-        // contoh filter sederhana (nanti disesuaikan data kamu)
-        const items = document.querySelectorAll(".umkm-item");
-
-        items.forEach(item => {
-            const text = item.textContent.toLowerCase();
-
-            if (!text.includes(query.toLowerCase())) {
-                item.style.display = "none";
-            }
-        });
-    }
-
-});
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
     var overlay = document.getElementById("map-overlay");
 
-    // Nonaktifkan interaksi awal
-    map.getInteractions().forEach(function(interaction) {
+    if (!overlay || !window.map) return;
+
+    map.getInteractions().forEach(function (interaction) {
         interaction.setActive(false);
     });
 
     overlay.addEventListener("click", function () {
-        // Aktifkan interaksi
-        map.getInteractions().forEach(function(interaction) {
+        map.getInteractions().forEach(function (interaction) {
             interaction.setActive(true);
         });
 
@@ -664,101 +656,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
-
-
-
-var buttons = document.querySelectorAll('#kategori-ui button');
-var select = document.getElementById('kategori-select');
-
-buttons.forEach(btn => {
-    btn.addEventListener('click', function() {
-
-        // update UI aktif
-        buttons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        // ambil value
-        var value = this.getAttribute('data-value');
-
-        // set ke select (INI YANG PENTING)
-        select.value = value;
-
-        // trigger onchange (biar fungsi lama jalan)
-        select.dispatchEvent(new Event('change'));
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const buttons = document.querySelectorAll('#kategori-ui button');
-    const select = document.getElementById('kategori-select');
-
-    if (!buttons.length || !select) return;
-
-    // 🔥 fungsi klik tombol
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const value = this.getAttribute('data-value');
-
-            // set ke select lama (biar filter jalan)
-            select.value = value;
-            select.dispatchEvent(new Event('change'));
-
-            // styling active
-            buttons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
-    // 🔥 ambil parameter dari URL (dari landing page)
-    const params = new URLSearchParams(window.location.search);
-    const kategoriURL = params.get("kategori");
-
-    if (kategoriURL) {
-        // cari tombol yg sesuai
-        buttons.forEach(btn => {
-            if (btn.getAttribute('data-value').toLowerCase() === kategoriURL.toLowerCase()) {
-                btn.click(); // trigger filter + active
-            }
-        });
-    }
-
-});
-
-
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const search = params.get("q");
-
-    if (!search) return;
-
-    var source = lyr_LokasiBisnisMulyoAgung_5.getSource();
-    var features = source.getFeatures();
-
-    features.forEach(function(feature) {
-
-        var nama = feature.get('nama');
-
-        if (nama && nama.toLowerCase().includes(search.toLowerCase())) {
-            feature.setStyle(undefined);
-        } else {
-            feature.setStyle(new ol.style.Style({}));
-        }
-
-    });
-
-});
 </script>
 
 
+<!-- =========================
+     2. FILTER ENGINE (UNCHANGED LOGIC)
+========================= -->
 <script>
 function applyFilter() {
+
     const params = new URLSearchParams(window.location.search);
     const kategori = params.get("kategori");
     const search = params.get("q");
@@ -767,7 +673,6 @@ function applyFilter() {
 
     var source = lyr_LokasiBisnisMulyoAgung_5.getSource();
 
-    // ⛔ penting: tunggu data siap
     if (source.getFeatures().length === 0) {
         setTimeout(applyFilter, 300);
         return;
@@ -775,18 +680,16 @@ function applyFilter() {
 
     var features = source.getFeatures();
 
-    features.forEach(function(feature) {
+    features.forEach(function (feature) {
 
         let matchKategori = true;
         let matchSearch = true;
 
-        // FILTER KATEGORI
         if (kategori && kategori !== "All") {
             let data = feature.get('kategori');
             matchKategori = data && data.toLowerCase() === kategori.toLowerCase();
         }
 
-        // FILTER SEARCH
         if (search) {
             let nama = feature.get('nama');
             matchSearch = nama && nama.toLowerCase().includes(search.toLowerCase());
@@ -800,195 +703,115 @@ function applyFilter() {
 
     });
 
-    console.log("FILTER APPLIED:", kategori, search);
 }
 </script>
 
+
+<!-- =========================
+     3. INIT FILTER
+========================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => applyFilter(), 500);
+});
+</script>
+
+
+<!-- =========================
+     4. CATEGORY BUTTON (NO SELECT, UI ONLY)
+========================= -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const buttons = document.querySelectorAll("#kategori-ui button");
+    const buttons = document.querySelectorAll('#kategori-ui button');
+
+    if (!buttons.length) return;
 
     buttons.forEach(btn => {
+
         btn.addEventListener("click", function () {
 
-            const value = this.dataset.value;
+            const value = this.getAttribute("data-value");
 
-            // update URL TANPA reload
+            // update URL
             const url = new URL(window.location);
             url.searchParams.set("kategori", value);
+
             window.history.pushState({}, "", url);
 
-            // aktifkan UI
+            // active UI
             buttons.forEach(b => b.classList.remove("active"));
             this.classList.add("active");
 
             applyFilter();
         });
+
     });
 
 });
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    // delay biar map & layer siap
-    setTimeout(() => {
-        applyFilter();
-    }, 500);
-
-});
-</script>
-
+<!-- =========================
+     5. SEARCH FORM (SAFE VERSION)
+========================= -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const input = document.querySelector('input[name="q"]');
+    const form = document.querySelector('.search-form-two form');
 
-    if (!input) return;
-
-    let delayTimer;
-
-    input.addEventListener("input", function () {
-
-        clearTimeout(delayTimer);
-
-        delayTimer = setTimeout(() => {
-
-            const keyword = input.value.trim();
-
-            const url = new URL(window.location);
-
-            if (keyword) {
-                url.searchParams.set("q", keyword);
-            } else {
-                url.searchParams.delete("q");
-            }
-
-            window.history.replaceState({}, "", url);
-
-            applyFilter();
-
-        }, 300); // delay biar ga berat
-    });
-
-});
-
-
-let nama = feature.get('nama') || "";
-let kategoriData = feature.get('kategori') || "";
-
-let matchSearch = true;
-let matchKategori = true;
-
-// kategori
-if (kategori && kategori !== "All") {
-    matchKategori = kategoriData.toLowerCase() === kategori.toLowerCase();
-}
-
-
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const input = document.querySelector('input[name="q"]');
-    if (!input) return;
+    if (!input || !form) return;
 
     const kategoriList = [
-        "Kuliner",
-        "Retail",
-        "Otomotif",
-        "Kesehatan",
-        "Jasa",
-        "Elektronik",
-        "Fashion"
+        "Kuliner","Retail","Otomotif",
+        "Kesehatan","Jasa","Elektronik","Fashion"
     ];
+
+    function detectKategori(keyword) {
+        return kategoriList.find(k =>
+            keyword.includes(k.toLowerCase())
+        ) || null;
+    }
+
+    function updateURL(keyword, kategori) {
+
+        const url = new URL(window.location);
+
+        if (kategori) {
+            url.searchParams.set("kategori", kategori);
+            url.searchParams.delete("q");
+        } else if (keyword) {
+            url.searchParams.set("q", keyword);
+            url.searchParams.delete("kategori");
+        } else {
+            url.searchParams.delete("q");
+            url.searchParams.delete("kategori");
+        }
+
+        return url;
+    }
 
     input.addEventListener("input", function () {
 
         const keyword = input.value.toLowerCase().trim();
+        const kategori = detectKategori(keyword);
 
-        let matchedKategori = null;
-
-        kategoriList.forEach(k => {
-            if (keyword.includes(k.toLowerCase())) {
-                matchedKategori = k;
-            }
-        });
-
-        const url = new URL(window.location);
-
-        if (matchedKategori) {
-            // arahkan ke kategori
-            url.searchParams.set("kategori", matchedKategori);
-            url.searchParams.delete("q");
-        } else {
-            // tetap search biasa
-            if (keyword) {
-                url.searchParams.set("q", keyword);
-            } else {
-                url.searchParams.delete("q");
-            }
-        }
+        const url = updateURL(keyword, kategori);
 
         window.history.replaceState({}, "", url);
 
         applyFilter();
-        setActiveKategoriUI();
-
     });
-
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const form = document.querySelector('.search-form-two form');
-    const input = form?.querySelector('input[name="q"]');
-
-    if (!form || !input) return;
-
-    const kategoriList = [
-        "Kuliner",
-        "Retail",
-        "Otomotif",
-        "Kesehatan",
-        "Jasa",
-        "Elektronik",
-        "Fashion"
-    ];
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         const keyword = input.value.toLowerCase().trim();
+        const kategori = detectKategori(keyword);
 
-        let matchedKategori = null;
+        const url = updateURL(keyword, kategori);
 
-        kategoriList.forEach(k => {
-            if (keyword.includes(k.toLowerCase())) {
-                matchedKategori = k;
-            }
-        });
-
-        let url = new URL(window.location);
-
-        if (matchedKategori) {
-            // 👉 masuk ke kategori
-            url.searchParams.set("kategori", matchedKategori);
-            url.searchParams.delete("q");
-        } else {
-            // 👉 fallback ke search biasa
-            if (keyword) {
-                url.searchParams.set("q", keyword);
-            } else {
-                url.searchParams.delete("q");
-            }
-        }
-
-        // redirect (ini penting supaya reload + state bersih)
         window.location.href = url.toString();
     });
 
@@ -996,7 +819,71 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
+<!-- =========================
+     6. SEARCH SYNC FROM URL
+========================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const input = document.querySelector('input[name="q"]');
+
+    if (!input) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+
+    if (q) input.value = q;
+
+});
+</script>
+
+
+<!-- =========================
+     7. CATEGORY SYNC FROM URL
+========================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const kategoriURL = params.get("kategori");
+
+    if (!kategoriURL) return;
+
+    const buttons = document.querySelectorAll('#kategori-ui button');
+
+    buttons.forEach(btn => {
+        if (btn.getAttribute('data-value').toLowerCase() === kategoriURL.toLowerCase()) {
+            btn.click();
+        }
+    });
+
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    function toggleSticky() {
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > 120) {
+            document.body.classList.add("fixed-header");
+        } else {
+            document.body.classList.remove("fixed-header");
+        }
+
+    }
+
+    window.addEventListener("scroll", toggleSticky);
+
+    // jalankan saat load juga
+    toggleSticky();
+
+});
+</script>
+</script>
+ </body>
 </html>
 
 

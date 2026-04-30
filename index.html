@@ -83,13 +83,25 @@
 
                                 <li class="dropdown">
                                 <a href="#kategori">Kategori</a>
-                                <ul>
-                                    <li><a href="#">Kuliner</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Jasa</a></li>
-                                    <li><a href="#">Pertanian</a></li>
-                                    <li><a href="#">Kerajinan</a></li>
-                                </ul>
+                               <ul>
+
+                                <li><a href="map.html?kategori=Kuliner">🍔 Kuliner</a></li>
+
+                                <li><a href="map.html?kategori=Fashion">👕 Fashion</a></li>
+
+                                <li><a href="map.html?kategori=Jasa">🛠️ Jasa</a></li>
+
+                                <li><a href="map.html?kategori=Otomotif">🔧 Otomotif</a></li>
+
+                                <li><a href="map.html?kategori=Kesehatan">🏥 Kesehatan</a></li>
+
+                                <li><a href="map.html?kategori=Retail">🛒 Retail</a></li>
+
+                                <li><a href="map.html?kategori=Elektronik">💻 Elektronik</a></li>
+
+                                <li><a href="map.html?kategori=All">📍 Semua UMKM</a></li>
+
+                            </ul>
                             </li>
 
                             <li><a href="#ulasan">Ulasan</a></li>
@@ -1137,7 +1149,68 @@
 <script src="assets/js/parallax-scroll.js"></script>
 
 <script src="assets/js/script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const forms = document.querySelectorAll('.search-form-two form');
+    const inputs = document.querySelectorAll('input[name="q"]');
+
+    if (!forms.length) return;
+
+    const kategoriList = [
+        "Kuliner",
+        "Retail",
+        "Otomotif",
+        "Kesehatan",
+        "Jasa",
+        "Elektronik",
+        "Fashion"
+    ];
+
+    function detectKategori(keyword) {
+        return kategoriList.find(k =>
+            keyword.includes(k.toLowerCase())
+        ) || null;
+    }
+
+    function buildURL(keyword, kategori) {
+        const url = new URL(window.location.origin + "/map.html");
+
+        if (kategori) {
+            url.searchParams.set("kategori", kategori);
+        } else if (keyword) {
+            url.searchParams.set("q", keyword);
+        }
+
+        return url;
+    }
+
+    function handleSearch(value) {
+        const keyword = value.toLowerCase().trim();
+        const kategori = detectKategori(keyword);
+
+        const url = buildURL(keyword, kategori);
+
+        window.location.href = url.toString();
+    }
+
+    // 🔥 LOOP SEMUA FORM (INI KUNCINYA)
+    forms.forEach((form, index) => {
+
+        const input = form.querySelector('input[name="q"]');
+
+        if (!input) return;
+
+        // submit handler
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            handleSearch(input.value);
+        });
+
+    });
+
+});
+</script>
 
 </body>
 </html>
