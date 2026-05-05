@@ -613,10 +613,12 @@ img {
 }
 
 
+
 /* Header Upper */
 
 .main-header .header-upper .search-form-two {
     position: relative;
+    
 }
 
 .main-header .header-upper .search-form-two input {

@@ -40,132 +40,153 @@
 
 <script src="assets/js/kategori-slider.js"></script>
 
-        <style>
-        html, body {
-            background-color: #ffffff;
-        }
-        .ol-control > * {
-            background-color: #f8f8f8!important;
-            color: #444444!important;
-            border-radius: 0px;
-        }
-        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
-            color: #444444!important;
-        }
-        .search-layer-input-search {
-            background-color: #f8f8f8!important;
-        }
-        .ol-control > *:focus, .ol-control >*:hover {
-            background-color: rgba(248, 248, 248, 0.7)!important;
-        } 
-        .ol-control {
-            background-color: rgba(255,255,255,.4) !important;
-            padding: 2px !important;
-        } 
-      
-            html, body {
-            width: 100%;
-            padding: 0;
-            margin: 0;
-                }
+    <style>
+/* =========================
+   GLOBAL
+========================= */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
 
-            /* MAP DI TENGAH */
-            #map {
-                width: 90%;
-                height: 800px;   /* bebas mau 400 / 600 */
-                margin: 120px auto 50px auto; /* atas kanan bawah kiri */
-                display: block;
-                border-radius: 10px;
-            }
 
-            #map-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.5);
-            z-index: 10;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #333;
-        }
-        
+/* =========================
+   MAP STYLE (FIX UTAMA)
+========================= */
+#map {
+    width: 90%;
+    height: 75vh; /* responsif */
+    margin: 80px auto 30px auto; /* naikkan posisi map */
+    display: block;
+    border-radius: 10px;
+    position: relative;
+}
 
-        #map {
-            position: relative;
-            margin: 30px auto 50px auto;
-        }
 
-        /* overlay info */
-        #map::before {
-            content: "Klik peta untuk interaksi";
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            z-index: 999;
-            pointer-events: none;
-        }
+/* =========================
+   INFO OVERLAY DI MAP
+========================= */
+#map::before {
+    content: "Klik peta untuk interaksi";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 999;
+    pointer-events: none;
+}
 
-        #kategori-section {
-            width: 90%;
-            margin: 120px auto 20px auto; /* sejajar dengan posisi map kamu */
-            text-align: center;
-        }
 
-        .kategori-title {
+/* =========================
+   OPENLAYERS UI STYLE
+========================= */
+.ol-control > * {
+    background-color: #f8f8f8 !important;
+    color: #444444 !important;
+    border-radius: 6px;
+}
+
+.ol-control {
+    background-color: rgba(255,255,255,.4) !important;
+    padding: 2px !important;
+}
+
+.ol-control > *:hover,
+.ol-control > *:focus {
+    background-color: rgba(248, 248, 248, 0.7) !important;
+}
+
+.ol-attribution a,
+.gcd-gl-input::placeholder,
+.search-layer-input-search::placeholder {
+    color: #444444 !important;
+}
+
+.search-layer-input-search {
+    background-color: #f8f8f8 !important;
+}
+
+
+/* =========================
+   HIDE SEARCH DI MAP
+========================= */
+.search-layer,
+.ol-search {
+    display: none !important;
+}
+
+
+/* =========================
+   KATEGORI SECTION
+========================= */
+#kategori-section {
+    width: 90%;
+    margin: 40px auto 10px auto;
+    text-align: center;
+}
+
+.kategori-title {
     font-family: 'Merriweather', serif;
     font-size: 20px;
     font-weight: 700;
     color: #222;
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
-        #kategori-ui {
-            display: flex;
-            justify-content: center; /* CENTER */
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+#kategori-ui {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
-        #kategori-ui button {
-            padding: 8px 16px;
-            border-radius: 25px;
-            border: 1px solid #ddd;
-            background: white;
-            cursor: pointer;
-            font-size: 13px;
-            transition: 0.25s;
-        }
+#kategori-ui button {
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.25s;
+}
 
-        #kategori-ui button:hover {
-            background: #f1f1f1;
-        }
+#kategori-ui button:hover {
+    background: #f1f1f1;
+}
 
-        #kategori-ui button.active {
-            background: #1a73e8;
-            color: white;
-            border-color: #1a73e8;
-        }
+#kategori-ui button.active {
+    background: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
 
-        #kategori-section {
-            width: 90%;
-            margin: 150px auto 5px auto; /* lebih dekat ke map */
-            text-align: center;
-        }
 
-      /* =========================
-   STICKY HEADER FIXED
+/* =========================
+   MAP OVERLAY BLOCK (OPSIONAL)
 ========================= */
+#map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.5);
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+}
 
 </style>
 
