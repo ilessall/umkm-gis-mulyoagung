@@ -1,119 +1,122 @@
-// ===============================
+// ======================================================
+// GIS UMKM Mulyoagung
+// FINAL CLEAN VERSION
+// ======================================================
+
+
+// ======================================================
+// EXTENT AREA
+// ======================================================
+var originalExtent = [
+    12532820.213883,
+    -883954.666332,
+    12533068.452202,
+    -883823.764645
+];
+
+
+// ======================================================
+// CENTER EXTENT
+// ======================================================
+var centerX =
+    (originalExtent[0] + originalExtent[2]) / 2;
+
+var centerY =
+    (originalExtent[1] + originalExtent[3]) / 2;
+
+
+// ======================================================
 // MAP INIT
-// ===============================
+// ======================================================
 var map = new ol.Map({
+
     target: 'map',
+
     renderer: 'canvas',
+
     layers: layersList,
+
     view: new ol.View({
-        center: ol.proj.fromLonLat([112.593, -7.944]),
-        zoom: 5,
-        maxZoom: 28,
-        minZoom: 1,
-        constrainResolution: true
+
+         // CENTER PAS SEPERTI SCREENSHOT
+       center: [12532944, -884350],
+
+        // ZOOM PAS
+        zoom: 15,
+
+        // USER GAK BISA ZOOM OUT LAGI
+        minZoom: 15,
+
+        maxZoom: 22
     })
 });
 
 
-// ===============================
-// INITIAL VIEW + LOCK AREA
-// ===============================
-var originalExtent = [12532820.213883, -883954.666332, 12533068.452202, -883823.764645];
-var offsetY = 90;
 
-var extent = [
-    originalExtent[0],
-    originalExtent[1] - offsetY,
-    originalExtent[2],
-    originalExtent[3] - offsetY
-];
-
-setTimeout(function () {
-
-    var view = map.getView();
-
-    view.fit(extent, {
-        size: map.getSize(),
-        maxZoom: 14.5,
-        padding: [5, 20, 40, 20]
-    });
-
-    var zoomNow = view.getZoom();
-    view.setZoom(zoomNow + 0.4);
-
-    view.setProperties({
-        extent: extent,
-        constrainOnlyCenter: true
-    });
-
-    var currentZoom = view.getZoom();
-    view.setMinZoom(currentZoom);
-    view.setMaxZoom(20);
-
-}, 300);
-
-
-// ===============================
-// CONTAINERS
-// ===============================
-function createContainer(id){
-    var el = document.createElement('div');
-    el.id = id;
-    return new ol.control.Control({ element: el });
-}
-
-map.addControl(createContainer('top-left-container'));
-map.addControl(createContainer('bottom-left-container'));
-map.addControl(createContainer('top-right-container'));
-map.addControl(createContainer('bottom-right-container'));
-
-
-// ===============================
+// ======================================================
 // POPUP
-// ===============================
-var container = document.getElementById('popup');
-var content = document.getElementById('popup-content');
-var closer = document.getElementById('popup-closer');
+// ======================================================
+var container =
+    document.getElementById('popup');
 
-closer.onclick = function () {
-    container.style.display = 'none';
-    closer.blur();
-    return false;
-};
+var content =
+    document.getElementById('popup-content');
+
+var closer =
+    document.getElementById('popup-closer');
+
 
 var overlayPopup = new ol.Overlay({
+
     element: container,
-    autoPan: true
+
+    autoPan: true,
+
+    autoPanAnimation: {
+        duration: 250
+    }
+
 });
+
 map.addOverlay(overlayPopup);
 
 
-// ===============================
-// 🔥 ANALISIS SPASIAL USAHA FINAL
-// ===============================
-function analisisUsaha(feature, layer) {
+closer.onclick = function () {
 
-    var radius = 400; // meter
-    var center = feature.getGeometry().getCoordinates();
+    overlayPopup.setPosition(undefined);
 
-    var usahaSekitar = [];
+    return false;
+};
 
-    layer.getSource().forEachFeature(function(f) {
 
-        var coord = f.getGeometry().getCoordinates();
+// ======================================================
+// DASHBOARD
+// ======================================================
+function updateDashboard() {
 
-        var distance = ol.sphere.getDistance(
-            ol.proj.toLonLat(center),
-            ol.proj.toLonLat(coord)
-        );
+    if (!window.lyr_LokasiBisnisMulyoAgung_5) {
 
-        if (distance <= radius && f !== feature) {
-            usahaSekitar.push(f);
-        }
-    });
+        setTimeout(updateDashboard, 1000);
 
-    // HITUNG KATEGORI
+        return;
+    }
+
+    var source =
+        lyr_LokasiBisnisMulyoAgung_5.getSource();
+
+    if (!source) return;
+
+    var features =
+        source.getFeatures();
+
+    if (!features.length) return;
+
+
+    // =========================================
+    // COUNT
+    // =========================================
     var count = {
+
         Kuliner: 0,
         Retail: 0,
         Otomotif: 0,
@@ -123,153 +126,440 @@ function analisisUsaha(feature, layer) {
         Fashion: 0
     };
 
-    usahaSekitar.forEach(f => {
-        var kategori = f.get('jenis');
+
+    // =========================================
+    // AREA
+    // =========================================
+    var area = {
+
+        utara: {},
+        selatan: {},
+        timur: {},
+        barat: {}
+    };
+
+
+    // =========================================
+    // LOOP FEATURE
+    // =========================================
+    features.forEach(function (feature) {
+
+        var style =
+            feature.getStyle();
+
+        // SKIP YANG DI HIDE FILTER
+        if (
+            style &&
+            style.getImage &&
+            style.getImage() === null
+        ) {
+            return;
+        }
+
+        var kategori =
+            feature.get('kategori') ||
+            feature.get('jenis');
+
+        if (!kategori) return;
+
+        kategori = kategori.trim();
+
+
+        // COUNT KATEGORI
         if (count[kategori] !== undefined) {
+
             count[kategori]++;
         }
+
+
+        // COORDINATE
+        var coord =
+            feature.getGeometry().getCoordinates();
+
+        var x = coord[0];
+        var y = coord[1];
+
+
+        // =====================================
+        // UTARA / SELATAN
+        // =====================================
+        if (y > centerY) {
+
+            area.utara[kategori] =
+                (area.utara[kategori] || 0) + 1;
+
+        } else {
+
+            area.selatan[kategori] =
+                (area.selatan[kategori] || 0) + 1;
+        }
+
+
+        // =====================================
+        // TIMUR / BARAT
+        // =====================================
+        if (x > centerX) {
+
+            area.timur[kategori] =
+                (area.timur[kategori] || 0) + 1;
+
+        } else {
+
+            area.barat[kategori] =
+                (area.barat[kategori] || 0) + 1;
+        }
+
     });
 
-    var total = usahaSekitar.length;
 
-    // KATEGORI DOMINAN
-    var sortedDesc = Object.entries(count).sort((a,b) => b[1] - a[1]);
-    var kategoriDominan = sortedDesc[0][0];
-    var jumlahDominan = sortedDesc[0][1];
+    // =========================================
+    // UPDATE CARD
+    // =========================================
+    function set(id, value) {
 
-    // ZONA
-    var zona = "";
-    if (jumlahDominan >= 5) zona = "RED";
-    else if (total >= 6) zona = "YELLOW";
-    else zona = "GREEN";
+        var el =
+            document.getElementById(id);
 
-    // REKOMENDASI
-    var sortedAsc = Object.entries(count).sort((a,b) => a[1] - b[1]);
+        if (el) {
 
-    var rekomendasi = sortedAsc
-        .filter(item => item[0] !== kategoriDominan)
-        .map(item => item[0])
-        .slice(0,3);
-
-    // ALASAN
-    var alasan = "";
-
-    if (zona === "GREEN") {
-        alasan = "Usaha sekitar masih sedikit, peluang pasar luas.";
-    } else if (zona === "YELLOW") {
-        alasan = "Komposisi usaha cukup beragam, kompetisi sedang.";
-    } else {
-        alasan = "Kategori " + kategoriDominan + " mendominasi, kompetisi tinggi.";
+            el.innerHTML = value;
+        }
     }
 
-    alasan += " Dominasi: " + kategoriDominan + " (" + jumlahDominan + " usaha).";
-    alasan += " Peluang terbaik: " + rekomendasi.join(", ") + ".";
+
+    // TOTAL KATEGORI
+    set('count-kuliner', count.Kuliner + ' UMKM');
+
+    set('count-retail', count.Retail + ' UMKM');
+
+    set('count-otomotif', count.Otomotif + ' UMKM');
+
+    set('count-kesehatan', count.Kesehatan + ' UMKM');
+
+    set('count-jasa', count.Jasa + ' UMKM');
+
+    set('count-elektronik', count.Elektronik + ' UMKM');
+
+    set('count-fashion', count.Fashion + ' UMKM');
+
+
+    // =========================================
+    // GET DOMINAN
+    // =========================================
+    function getDominan(obj) {
+
+        var dominan = "-";
+
+        var max = 0;
+
+        Object.keys(obj).forEach(function (k) {
+
+            if (obj[k] > max) {
+
+                max = obj[k];
+
+                dominan = k;
+            }
+
+        });
+
+        return dominan;
+    }
+
+
+    // DOMINASI AREA
+    set(
+        'utara-dominan',
+        getDominan(area.utara)
+    );
+
+    set(
+        'selatan-dominan',
+        getDominan(area.selatan)
+    );
+
+    set(
+        'timur-dominan',
+        getDominan(area.timur)
+    );
+
+    set(
+        'barat-dominan',
+        getDominan(area.barat)
+    );
+
+}
+
+setTimeout(updateDashboard, 1500);
+
+
+// ======================================================
+// ANALISIS USAHA
+// ======================================================
+function analisisUsaha(feature) {
+
+    var radius = 300;
+
+    var center =
+        feature.getGeometry().getCoordinates();
+
+    var total = 0;
+
+    var kategoriCount = {};
+
+
+    lyr_LokasiBisnisMulyoAgung_5
+        .getSource()
+        .forEachFeature(function (f) {
+
+            if (f === feature) return;
+
+            var coord =
+                f.getGeometry().getCoordinates();
+
+            var distance =
+                ol.sphere.getDistance(
+
+                    ol.proj.toLonLat(center),
+
+                    ol.proj.toLonLat(coord)
+                );
+
+            if (distance <= radius) {
+
+                total++;
+
+                var kategori =
+                    f.get('kategori') ||
+                    f.get('jenis');
+
+                kategoriCount[kategori] =
+                    (kategoriCount[kategori] || 0) + 1;
+            }
+
+        });
+
+
+    // DOMINAN
+    var dominan = "-";
+
+    var max = 0;
+
+    Object.keys(kategoriCount).forEach(function (k) {
+
+        if (kategoriCount[k] > max) {
+
+            max = kategoriCount[k];
+
+            dominan = k;
+        }
+
+    });
+
+
+    // ZONA
+    var zona = "GREEN";
+
+    if (max >= 5) {
+
+        zona = "RED";
+
+    } else if (total >= 5) {
+
+        zona = "YELLOW";
+    }
+
 
     return {
-        zona: zona,
-        dominan: kategoriDominan,
-        rekomendasi: rekomendasi,
-        alasan: alasan,
-        total: total
+
+        total: total,
+
+        dominan: dominan,
+
+        zona: zona
     };
 }
 
 
-// ===============================
-// 🔥 HOVER POPUP + ANALISIS
-// ===============================
-map.on('pointermove', function(evt) {
+// ======================================================
+// CLICK POPUP
+// ======================================================
+map.on('singleclick', function (evt) {
 
-    var feature = map.forEachFeatureAtPixel(evt.pixel, function(f) {
-        return f;
+    var feature =
+        map.forEachFeatureAtPixel(
+
+            evt.pixel,
+
+            function (f) {
+                return f;
+            }
+        );
+
+    if (!feature) {
+
+        overlayPopup.setPosition(undefined);
+
+        return;
+    }
+
+
+    var nama =
+        feature.get('nama') || '-';
+
+    var jenis =
+        feature.get('kategori') ||
+        feature.get('jenis') ||
+        '-';
+
+    var alamat =
+        feature.get('alamat') || '-';
+
+
+    var analisis =
+        analisisUsaha(feature);
+
+
+    var warnaZona = {
+
+        GREEN: "#16a34a",
+
+        YELLOW: "#eab308",
+
+        RED: "#dc2626"
+    };
+
+
+    content.innerHTML = `
+
+    <div style="
+        min-width:260px;
+        line-height:1.7;
+    ">
+
+        <div style="
+            font-size:16px;
+            font-weight:700;
+            margin-bottom:10px;
+        ">
+            ${nama}
+        </div>
+
+        <div>
+            <b>Kategori:</b>
+            ${jenis}
+        </div>
+
+        <div>
+            <b>Alamat:</b>
+            ${alamat}
+        </div>
+
+        <hr>
+
+        <div style="
+            background:${warnaZona[analisis.zona]};
+            color:white;
+            display:inline-block;
+            padding:5px 12px;
+            border-radius:20px;
+            margin-bottom:10px;
+            font-size:12px;
+        ">
+            Zona ${analisis.zona}
+        </div>
+
+        <div>
+            <b>Dominasi:</b>
+            ${analisis.dominan}
+        </div>
+
+        <div>
+            <b>Total sekitar:</b>
+            ${analisis.total}
+        </div>
+
+    </div>
+    `;
+
+    overlayPopup.setPosition(evt.coordinate);
+
+});
+
+
+// ======================================================
+// LEGEND
+// ======================================================
+var layerSwitcher =
+    new ol.control.LayerSwitcher({
+
+        activationMode: 'click',
+
+        startActive: true,
+
+        tipLabel: 'Legend',
+
+        collapseTipLabel: 'Close Legend',
+
+        groupSelectStyle: 'children'
     });
 
-    if (feature) {
-
-        var nama = feature.get('nama') || '-';
-        var jenis = feature.get('jenis') || '-';
-        var alamat = feature.get('alamat') || '-';
-
-        var analisis = analisisUsaha(feature, lyr_LokasiBisnisMulyoAgung_5);
-
-        var warnaZona = {
-            GREEN: "#16a34a",
-            YELLOW: "#eab308",
-            RED: "#dc2626"
-        };
-
-        content.innerHTML = `
-            <div style="font-size:13px; line-height:1.5; min-width:250px;">
-                
-                <b style="font-size:15px;">${nama}</b><br>
-                <span><b>Jenis:</b> ${jenis}</span><br>
-                <span><b>Alamat:</b> ${alamat}</span><br><br>
-
-                <span style="font-weight:bold; color:${warnaZona[analisis.zona]}">
-                    Zona: ${analisis.zona}
-                </span><br>
-
-                <span><b>Kategori Dominan:</b> ${analisis.dominan}</span><br>
-
-                <span><b>Total Usaha Sekitar:</b> ${analisis.total}</span><br>
-
-                <span><b>Rekomendasi:</b> ${analisis.rekomendasi.join(", ")}</span><br>
-
-                <div style="margin-top:6px; font-size:12px; color:#555;">
-                    ${analisis.alasan}
-                </div>
-            </div>
-        `;
-
-        container.style.display = 'block';
-        overlayPopup.setPosition(evt.coordinate);
-
-    } else {
-        container.style.display = 'none';
-    }
-});
-
-
-// ===============================
-// LEGEND
-// ===============================
-var layerSwitcher = new ol.control.LayerSwitcher({
-    activationMode: 'click',
-    startActive: true,
-    tipLabel: "Legenda"
-});
 map.addControl(layerSwitcher);
 
 
-// ===============================
-// ATTRIBUTION
-// ===============================
-var bottomAttribution = new ol.control.Attribution({
-    collapsible: false,
-    collapsed: false
-});
-map.addControl(bottomAttribution);
-
-
-// ===============================
-// FINAL UI POSITION + CLEAN
-// ===============================
+// ======================================================
+// FORCE LEGEND OPEN
+// ======================================================
 setTimeout(function () {
 
-    var zoom = document.querySelector('.ol-zoom');
-    if (zoom) {
-        zoom.style.position = "absolute";
-        zoom.style.top = "10px";
-        zoom.style.left = "10px";
-        zoom.style.zIndex = "1000";
-    }
+    var legend =
+        document.querySelector('.layer-switcher');
 
-    var legend = document.querySelector('.layer-switcher');
     if (legend) {
-        legend.style.position = "absolute";
-        legend.style.top = "10px";
-        legend.style.right = "10px";
-        legend.style.zIndex = "1000";
+
+        legend.classList.add('shown');
+
+        legend.style.display = 'block';
+
+        legend.style.position = 'absolute';
+
+        legend.style.top = '20px';
+
+        legend.style.right = '20px';
+
+        legend.style.zIndex = '9999';
     }
 
-}, 500);
+}, 1200);
+
+
+// ======================================================
+// ATTRIBUTION
+// ======================================================
+map.addControl(
+
+    new ol.control.Attribution({
+
+        collapsible: true
+    })
+);
+
+
+// ======================================================
+// POSITION ZOOM BUTTON
+// ======================================================
+setTimeout(function () {
+
+    var zoom =
+        document.querySelector('.ol-zoom');
+
+    if (zoom) {
+
+        zoom.style.top = '90px';
+
+        zoom.style.left = '15px';
+    }
+
+}, 1000);
+
+
