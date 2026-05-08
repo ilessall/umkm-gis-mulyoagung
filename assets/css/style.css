@@ -2878,51 +2878,74 @@ img {
 .program-block .inner-box:hover p {
     color: rgba(255,255,255,0.9);
 }
-
 /* ===============================
-   Map Preview Section
+  /* =================================
+   MAP PREVIEW SECTION
 ================================= */
-.map-preview-section {
-    padding: 100px 0;
-    background: #f8fafc;
-}
 
-/* Map Box */
-.map-preview-section .map-box {
-    border-radius: 20px;
+.map-preview-section .map-box{
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    background: #f5f5f5;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* Content */
-.map-preview-section .content-block {
-    padding-left: 20px;
+/* =================================
+   IFRAME PREVIEW
+================================= */
+
+.map-preview-section .map-preview-iframe{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #fff;
+
+    /* crop feel */
+    transform: scale(1.08);
+    transform-origin: center center;
+
+    transition: transform .4s ease;
 }
 
-/* Text */
-.map-preview-section .text p {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 20px;
+/* hover smooth */
+.map-preview-section .map-box:hover .map-preview-iframe{
+    transform: scale(1.12);
 }
 
-/* Button */
-.theme-btn.btn-style-one {
-    display: inline-block;
-    padding: 12px 28px;
-    background: #2982e5;
-    color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: 0.3s;
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 991px){
+
+    .map-preview-section .map-box{
+        height: 420px;
+        margin-bottom: 40px;
+    }
+
 }
 
-/* Hover button */
-.theme-btn.btn-style-one:hover {
-    background: #1f5fb8;
+@media (max-width: 767px){
+
+    .map-preview-section .map-box{
+        height: 350px;
+        border-radius: 12px;
+    }
+
+    .map-preview-section .map-preview-iframe{
+        transform: scale(1.03);
+    }
+
 }
 
+/* hover effect biar hidup */
+.map-preview-section .map-box:hover .map-preview-iframe {
+    transform: scale(1.05);
+}
 /* Projects section */
 
 .projects-section {
@@ -4568,7 +4591,18 @@ img {
 }
 
 
+.map-preview-section {
+    padding: 80px 0;
+}
 
+#map {
+    width: 100%;
+    height: 520px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: #eee; /* ini penting biar gak putih kosong */
+}
 
 
 

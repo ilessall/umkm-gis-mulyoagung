@@ -545,7 +545,409 @@
     font-size:14px;
 }
 
-    </style>
+/* =========================================
+   TABLE UMKM SECTION
+========================================== */
+
+#umkm-table-section{
+
+    width:92%;
+
+    margin:40px auto 0;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+}
+
+/* =========================================
+   HEADER
+========================================== */
+
+.umkm-table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:24px;
+
+}
+
+.umkm-table-header h3{
+
+    margin:0;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.umkm-table-header p{
+
+    margin:6px 0 0;
+
+    color:#6b7280;
+
+    font-size:14px;
+
+}
+
+.umkm-total{
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    padding:10px 16px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+/* =========================================
+   TABLE WRAPPER
+========================================== */
+
+.umkm-table-wrapper{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    border-radius:18px;
+
+    border:1px solid #e5e7eb;
+
+}
+
+/* =========================================
+   TABLE
+========================================== */
+
+#umkm-table{
+
+    width:100%;
+
+    min-width:1000px;
+
+    border-collapse:collapse;
+
+    background:#fff;
+
+}
+
+/* =========================================
+   TABLE HEAD
+========================================== */
+
+#umkm-table thead{
+
+    background:#111827;
+
+}
+
+#umkm-table thead th{
+
+    padding:18px 16px;
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-align:left;
+
+    white-space:nowrap;
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+}
+
+#umkm-table thead th:last-child{
+
+    border-right:none;
+
+}
+
+/* =========================================
+   TABLE BODY
+========================================== */
+
+#umkm-table tbody tr{
+
+    border-bottom:1px solid #f1f5f9;
+
+    transition:.2s;
+
+}
+
+#umkm-table tbody tr:hover{
+
+    background:#f8fbff;
+
+}
+
+#umkm-table tbody td{
+
+    padding:16px;
+
+    color:#374151;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    vertical-align:top;
+
+}
+
+/* =========================================
+   COLUMN STYLE
+========================================== */
+
+.table-no{
+
+    width:70px;
+
+    text-align:center;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.table-nama{
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.table-kategori{
+
+    display:inline-block;
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.table-lokasi{
+
+    color:#6b7280;
+
+}
+
+.table-deskripsi{
+
+    min-width:280px;
+
+    line-height:1.7;
+
+}
+
+/* =========================================
+   PAGINATION
+========================================== */
+
+.table-pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:28px;
+
+}
+
+.table-pagination button{
+
+    min-width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    border:1px solid #e5e7eb;
+
+    color:#111827;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:
+    0 2px 8px rgba(0,0,0,.05);
+
+}
+
+.table-pagination button:hover{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+}
+
+.table-pagination button.active{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border-color:#2563eb;
+
+}
+
+.table-pagination button:disabled{
+
+    opacity:.4;
+
+    cursor:not-allowed;
+
+}
+
+/* =========================================
+   INFO PAGINATION
+========================================== */
+
+.table-pagination-info{
+
+    margin-top:16px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#6b7280;
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:991px){
+
+    #umkm-table-section{
+
+        width:95%;
+
+        padding:20px;
+
+    }
+
+    .umkm-table-header h3{
+
+        font-size:24px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    #umkm-table-section{
+
+        padding:16px;
+
+        border-radius:18px;
+
+    }
+
+    .umkm-table-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .umkm-table-header h3{
+
+        font-size:20px;
+
+    }
+
+    #umkm-table thead th{
+
+        font-size:13px;
+
+        padding:14px;
+
+    }
+
+    #umkm-table tbody td{
+
+        font-size:13px;
+
+        padding:14px;
+
+    }
+
+    .table-pagination button{
+
+        min-width:36px;
+
+        height:36px;
+
+        font-size:13px;
+
+    }
+
+}
+
+</style>
 </head>
 <!-- =========================================
      WEBSITE CORE JS
@@ -567,6 +969,7 @@
 <script src="assets/js/TweenMax.min.js"></script>
 
 <script src="assets/js/script.js"></script>
+
 
 <!-- =========================================
      MOBILE MENU FIX
@@ -628,6 +1031,451 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <div id="hover-tooltip" class="hover-tooltip"></div>
+
+<script>
+
+/* =========================================
+   TABLE UMKM + PAGINATION
+========================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        setTimeout(
+            initUMKMTable,
+            1200
+        );
+
+    }
+);
+
+function initUMKMTable(){
+
+    if(!window.lyr_LokasiBisnisMulyoAgung_5){
+
+        setTimeout(
+            initUMKMTable,
+            500
+        );
+
+        return;
+
+    }
+
+    const source =
+        lyr_LokasiBisnisMulyoAgung_5.getSource();
+
+    if(!source){
+
+        setTimeout(
+            initUMKMTable,
+            500
+        );
+
+        return;
+
+    }
+
+    const features =
+        source.getFeatures();
+
+    if(!features.length){
+
+        setTimeout(
+            initUMKMTable,
+            500
+        );
+
+        return;
+
+    }
+
+    const tbody =
+        document.getElementById(
+            "umkm-table-body"
+        );
+
+    const pagination =
+        document.getElementById(
+            "table-pagination"
+        );
+
+    const paginationInfo =
+        document.getElementById(
+            "table-pagination-info"
+        );
+
+    const totalData =
+        document.getElementById(
+            "umkm-total-data"
+        );
+
+    let currentPage = 1;
+
+    const rowsPerPage = 10;
+
+    const allData = [];
+
+    /* =====================================
+       LIST KATEGORI VALID
+    ====================================== */
+
+    const kategoriValid = [
+
+        "Kuliner",
+        "Retail",
+        "Otomotif",
+        "Kesehatan",
+        "Jasa",
+        "Elektronik",
+        "Fashion"
+
+    ];
+
+    /* =====================================
+       ICON KATEGORI
+    ====================================== */
+
+    function getKategoriIcon(kategori){
+
+        switch(kategori){
+
+            case "Kuliner":
+                return "🍔";
+
+            case "Retail":
+                return "🛒";
+
+            case "Otomotif":
+                return "🔧";
+
+            case "Kesehatan":
+                return "🏥";
+
+            case "Jasa":
+                return "🛠️";
+
+            case "Elektronik":
+                return "💻";
+
+            case "Fashion":
+                return "👕";
+
+            default:
+                return "📍";
+
+        }
+
+    }
+
+    /* =====================================
+       AMBIL DATA
+    ====================================== */
+
+    features.forEach(function(feature){
+
+        const nama =
+            feature.get("nama") ||
+            feature.get("Nama") ||
+            "-";
+
+        const kategori =
+            feature.get("kategori") ||
+            feature.get("jenis") ||
+            "-";
+
+        const alamat =
+            feature.get("alamat") ||
+            feature.get("Alamat") ||
+            "-";
+
+        const deskripsi =
+            feature.get("deskripsi") ||
+            feature.get("Deskripsi") ||
+            "";
+
+        // FILTER KATEGORI
+        if(
+            !kategoriValid.includes(
+                kategori
+            )
+        ){
+            return;
+        }
+
+        allData.push({
+
+            nama,
+            kategori,
+            alamat,
+            deskripsi
+
+        });
+
+    });
+
+    /* =====================================
+       SORT BERDASARKAN KATEGORI
+    ====================================== */
+
+    allData.sort(function(a,b){
+
+        return a.kategori.localeCompare(
+            b.kategori
+        );
+
+    });
+
+    /* =====================================
+       TOTAL DATA
+    ====================================== */
+
+    totalData.innerHTML =
+        allData.length;
+
+    /* =====================================
+       RENDER TABLE
+    ====================================== */
+
+    function renderTable(page){
+
+        tbody.innerHTML = "";
+
+        const start =
+            (page - 1) * rowsPerPage;
+
+        const end =
+            start + rowsPerPage;
+
+        const paginatedData =
+            allData.slice(start, end);
+
+        paginatedData.forEach(function(item, index){
+
+            tbody.innerHTML += `
+
+                <tr>
+
+                    <td class="table-no">
+
+                        ${start + index + 1}
+
+                    </td>
+
+                    <td>
+
+                        <span class="table-kategori">
+
+                            ${getKategoriIcon(item.kategori)}
+
+                            ${item.kategori}
+
+                        </span>
+
+                    </td>
+
+                    <td class="table-nama">
+
+                        <strong>
+
+                            ${item.nama}
+
+                        </strong>
+
+                    </td>
+
+                    <td class="table-lokasi">
+
+                        ${item.alamat}
+
+                    </td>
+
+                    <td class="table-deskripsi">
+
+                        ${
+                            item.deskripsi &&
+                            item.deskripsi.trim() !== ""
+
+                            ? item.deskripsi
+
+                            : '<span style="color:#9ca3af;">-</span>'
+                        }
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+        renderPagination();
+
+        paginationInfo.innerHTML = `
+
+            Menampilkan
+
+            ${start + 1}
+
+            -
+
+            ${Math.min(
+                end,
+                allData.length
+            )}
+
+            dari
+
+            ${allData.length}
+
+            data UMKM
+
+        `;
+
+    }
+
+    /* =====================================
+       PAGINATION
+    ====================================== */
+
+    function renderPagination(){
+
+        pagination.innerHTML = "";
+
+        const totalPages =
+            Math.ceil(
+                allData.length / rowsPerPage
+            );
+
+        /* PREV */
+
+        const prevBtn =
+            document.createElement(
+                "button"
+            );
+
+        prevBtn.innerHTML = "‹";
+
+        prevBtn.disabled =
+            currentPage === 1;
+
+        prevBtn.onclick = function(){
+
+            if(currentPage > 1){
+
+                currentPage--;
+
+                renderTable(currentPage);
+
+            }
+
+        };
+
+        pagination.appendChild(
+            prevBtn
+        );
+
+        /* LIMIT 10 BUTTON */
+
+        let startPage =
+            Math.max(
+                1,
+                currentPage - 4
+            );
+
+        let endPage =
+            Math.min(
+                totalPages,
+                startPage + 9
+            );
+
+        if(endPage - startPage < 9){
+
+            startPage =
+                Math.max(
+                    1,
+                    endPage - 9
+                );
+
+        }
+
+        /* BUTTON NUMBER */
+
+        for(
+            let i = startPage;
+            i <= endPage;
+            i++
+        ){
+
+            const btn =
+                document.createElement(
+                    "button"
+                );
+
+            btn.innerHTML = i;
+
+            if(i === currentPage){
+
+                btn.classList.add(
+                    "active"
+                );
+
+            }
+
+            btn.onclick = function(){
+
+                currentPage = i;
+
+                renderTable(currentPage);
+
+            };
+
+            pagination.appendChild(
+                btn
+            );
+
+        }
+
+        /* NEXT */
+
+        const nextBtn =
+            document.createElement(
+                "button"
+            );
+
+        nextBtn.innerHTML = "›";
+
+        nextBtn.disabled =
+            currentPage === totalPages;
+
+        nextBtn.onclick = function(){
+
+            if(currentPage < totalPages){
+
+                currentPage++;
+
+                renderTable(currentPage);
+
+            }
+
+        };
+
+        pagination.appendChild(
+            nextBtn
+        );
+
+    }
+
+    /* =====================================
+       INIT
+    ====================================== */
+
+    renderTable(currentPage);
+
+}
+
+</script>
 <body>
 
     <!-- =========================================
@@ -1130,9 +1978,100 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
         </div>
+        
 
     </div>
 
+<!-- =========================================
+     TABLE UMKM
+========================================== -->
+<div id="umkm-table-section">
+
+    <!-- HEADER -->
+    <div class="umkm-table-header">
+
+        <div>
+
+            <h3>
+                Daftar UMKM Mulyoagung
+            </h3>
+
+            <p>
+                Data usaha berdasarkan kategori UMKM
+            </p>
+
+        </div>
+
+        <div class="umkm-total-box">
+
+            Total :
+
+            <b id="umkm-total-data">
+                0
+            </b>
+
+            UMKM
+
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-wrapper">
+
+        <table id="umkm-table">
+
+            <thead>
+
+                <tr>
+
+                    <th width="70">
+                        No
+                    </th>
+
+                    <th width="180">
+                        Kategori
+                    </th>
+
+                    <th>
+                        Nama Usaha
+                    </th>
+
+                    <th>
+                        Alamat
+                    </th>
+
+                    <th>
+                        Deskripsi
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="umkm-table-body">
+
+                <!-- AUTO JS -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- PAGINATION -->
+    <div
+        class="table-pagination"
+        id="table-pagination"
+    ></div>
+
+    <!-- INFO -->
+    <div
+        class="table-pagination-info"
+        id="table-pagination-info"
+    ></div>
+
+</div>
     <!-- =========================================
          FOOTER
     ========================================== -->
@@ -2157,6 +3096,28 @@ map.getViewport()
 
 );
 
+</script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('preview') === '1') {
+        // Sembunyikan elemen selain map
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapWrapper = document.getElementById('map-wrapper');
+            if (mapWrapper) {
+                // Scroll ke map-wrapper
+                mapWrapper.scrollIntoView({ behavior: 'instant' });
+
+                // Atau: pindahkan map-wrapper ke posisi paling atas
+                document.body.style.overflow = 'hidden';
+                mapWrapper.style.position = 'fixed';
+                mapWrapper.style.top = '0';
+                mapWrapper.style.left = '0';
+                mapWrapper.style.width = '100%';
+                mapWrapper.style.height = '100%';
+                mapWrapper.style.zIndex = '9999';
+            }
+        });
+    }
 </script>
 
 </body>
