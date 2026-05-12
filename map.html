@@ -47,6 +47,30 @@
 
     <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
 
+   <!-- LAYERS DATA -->
+    <script src="layers/AreaDesaMulyoAgung_1.js"></script>
+    <script src="layers/JalanUtama_2.js"></script>
+    <script src="layers/LokasiTempatIbadah_3.js"></script>
+    <script src="layers/LokasiSekolah_4.js"></script>
+    <script src="layers/LokasiBisnisMulyoAgung_5.js"></script>
+    <script src="layers/AreaUtara_6.js"></script>
+    <script src="layers/AreaTimur_8.js"></script>
+    <script src="layers/AreaBarat_9.js"></script>
+
+    <!-- STYLE -->
+    <script src="styles/AreaDesaMulyoAgung_1_style.js"></script>
+    <script src="styles/JalanUtama_2_style.js"></script>
+    <script src="styles/LokasiTempatIbadah_3_style.js"></script>
+    <script src="styles/LokasiSekolah_4_style.js"></script>
+    <script src="styles/LokasiBisnisMulyoAgung_5_style.js"></script>
+    <script src="styles/AreaUtara_6_style.js"></script>
+    <script src="styles/AreaTimur_8_style.js"></script>
+    <script src="styles/AreaBarat_9_style.js"></script>
+
+    <!-- MAP (harus paling terakhir) -->
+    <script src="./layers/layers.js"></script>
+    <script src="./resources/Autolinker.min.js"></script>
+    <script src="./resources/qgis2web.js"></script>
     <!-- =========================================
          WEBSITE CSS
     ========================================== -->
@@ -113,8 +137,9 @@
         ========================================== */
         #kategori-section {
             width: 92%;
+            max-width: 1400px;
             margin: auto;
-            padding: 30px 0;
+            padding: 30px 0 0 0;
         }
 
         .sec-title {
@@ -146,21 +171,24 @@
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
             margin-bottom: 24px;
         }
 
         .dashboard-box {
             background: #fff;
-            border-radius: 20px;
-            padding: 18px;
+            border-radius: 16px;
+            padding: 14px 12px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 14px;
+            text-align: center;
+            gap: 8px;
             border: 1px solid #e5e7eb;
             box-shadow: 0 4px 15px rgba(0, 0, 0, .06);
             transition: .3s;
+            min-width: 0;
         }
 
         .dashboard-box:hover {
@@ -168,33 +196,39 @@
         }
 
         .dashboard-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             background: #eff6ff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
         .dashboard-box h4 {
             margin: 0;
-            font-size: 15px;
+            font-size: 13px;
             color: #111827;
             font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
         .dashboard-box p {
-            margin: 4px 0 0;
+            margin: 2px 0 0;
             color: #6b7280;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         /* =========================================
            AREA DASHBOARD
         ========================================== */
         .area-dashboard {
+             margin-bottom: 30px;
             background: #fff;
             border-radius: 22px;
             padding: 24px;
@@ -390,6 +424,12 @@
         /* =========================================
            RESPONSIVE
         ========================================== */
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
         @media (max-width: 991px) {
 
             body {
@@ -406,6 +446,10 @@
 
             #map {
                 height: 68vh;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -424,9 +468,12 @@
                 height: 60vh;
             }
 
-            .dashboard-grid,
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .area-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -528,21 +575,23 @@
 .hover-tooltip{
     position:absolute;
     background:#111827;
-    color:#fff;
-    padding:10px 14px;
-    border-radius:12px;
+    color:#d1d5db;
+    padding:14px 16px;
+    border-radius:14px;
     font-size:13px;
     line-height:1.5;
     pointer-events:none;
     z-index:999999;
-    min-width:220px;
-    box-shadow:0 8px 20px rgba(0,0,0,.18);
+    min-width:240px;
+    max-width:290px;
+    box-shadow:0 12px 32px rgba(0,0,0,.35);
     display:none;
-    transition:.15s;
+    border:1px solid rgba(255,255,255,0.07);
 }
 
 .hover-tooltip b{
     font-size:14px;
+    color:#fff;
 }
 
 /* =========================================
@@ -551,9 +600,11 @@
 
 #umkm-table-section{
 
-    width:92%;
+    width:100%;
 
-    margin:40px auto 0;
+    max-width:1400px;
+
+    margin:40px auto 40px;
 
     background:#fff;
 
@@ -882,6 +933,7 @@
     #umkm-table-section{
 
         width:95%;
+        max-width:100%;
 
         padding:20px;
 
@@ -947,7 +999,422 @@
 
 }
 
+/* =========================================
+   AREA DETAIL
+========================================== */
+.area-detail {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.area-detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #374151;
+    background: #fff;
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.area-detail-item span {
+    color: #6b7280;
+}
+
+.area-detail-item b {
+    font-size: 12px;
+    color: #2563eb;
+}
+
+.area-total {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 6px;
+}
+
+/* ===== FOOTER FULL WIDTH ===== */
+footer.main-footer {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box;
+}
+
+footer.main-footer .auto-container {
+    max-width: 1280px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 991px) {
+    footer.main-footer .auto-container {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    footer.main-footer .auto-container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    footer.main-footer .widgets-section .row > [class*="col-"] {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+footer.main-footer .footer-bottom {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+body {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+html {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* ===== SEARCH BAR FIX ===== */
+.header-upper .inner-container {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+}
+
+.header-upper .nav-outer {
+    flex: 1 1 auto !important;
+    overflow: visible !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.header-upper .main-menu {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.header-upper .navbar-collapse {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.header-upper .navigation {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+.header-upper .navbar-right {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    margin-left: 0 !important;
+    overflow: visible !important;
+}
+
+.header-upper .search-form-two {
+    display: flex !important;
+    align-items: center !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+}
+
+/* ===== MOBILE SEARCH ICON ===== */
+.search-icon-mobile {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    margin: 0;
+    line-height: 1;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon-mobile svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+}
+
+/* Hamburger di kanan bareng search */
+.mobile-toggler-right {
+    display: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 2px;
+}
+
+@media (max-width: 991px) {
+    /* Sembunyikan search bar desktop */
+    .header-upper .navbar-right .search-form-two,
+    .sticky-header .navbar-right .search-form-two {
+        display: none !important;
+    }
+
+    /* Sembunyikan hamburger lama di nav-outer */
+    .nav-outer .mobile-nav-toggler {
+        display: none !important;
+    }
+
+    /* Tampilkan icon search mobile */
+    .search-icon-mobile {
+        display: flex !important;
+    }
+
+    /* Tampilkan hamburger kanan */
+    .mobile-toggler-right {
+        display: flex !important;
+        align-items: center;
+    }
+
+    /* navbar-right gap rapi */
+    .header-upper .navbar-right,
+    .sticky-header .navbar-right {
+        gap: 2px !important;
+        align-items: center !important;
+    }
+}
+
+/* ===== FILTER KATEGORI SLIDER MOBILE ===== */
+@media (max-width: 991px) {
+    #kategori-ui {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        padding: 4px 0 12px 0 !important;
+        gap: 8px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+    }
+    #kategori-ui::-webkit-scrollbar {
+        display: none;
+    }
+    #kategori-ui button {
+        flex: 0 0 calc(33.333% - 6px) !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+        padding: 10px 8px !important;
+        font-size: 12px !important;
+        text-align: center !important;
+        scroll-snap-align: start;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width: 480px) {
+    #kategori-ui button {
+        flex: 0 0 calc(33.333% - 6px) !important;
+        font-size: 11px !important;
+        padding: 9px 6px !important;
+    }
+}
+
+/* ===== SEARCH POPUP MOBILE ===== */
+.search-popup-mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    z-index: 999999999;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+    backdrop-filter: blur(4px);
+}
+
+.search-popup-mobile .search-inner {
+    background: #1f2937;
+    border-radius: 20px;
+    padding: 24px 20px 20px;
+    width: 92%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.search-popup-mobile .search-inner-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-popup-mobile .search-inner form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-popup-mobile .search-inner input {
+    flex: 1;
+    background: #374151;
+    border: 1px solid #4b5563;
+    border-radius: 12px;
+    padding: 13px 16px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-popup-mobile .search-inner input:focus {
+    border-color: #2563eb;
+}
+
+.search-popup-mobile .search-inner input::placeholder {
+    color: #9ca3af;
+}
+
+.search-popup-mobile .search-inner button[type="submit"] {
+    background: #2563eb;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    padding: 13px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.search-popup-mobile .search-inner button[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+.search-popup-mobile .close-mobile-search {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ef4444;
+    border: 2px solid #1f2937;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.search-popup-mobile .close-mobile-search:hover {
+    background: #dc2626;
+}
+
+@media (max-width: 991px) {
+    /* Sembunyikan search bar di mobile/tablet */
+    .header-upper .navbar-right .search-form-two,
+    .sticky-header .navbar-right .search-form-two {
+        display: none !important;
+    }
+
+    /* Tampilkan icon search */
+    .search-icon-mobile {
+        display: flex !important;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-popup-mobile {
+        padding-top: 60px;
+    }
+
+    .search-popup-mobile .search-inner {
+        width: 94%;
+        padding: 20px 16px 16px;
+    }
+}
+
 </style>
+
+<!-- Search mobile — definisi global + attach listener setelah DOM ready -->
+<script>
+function openMobileSearch(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    var popup = document.getElementById('searchPopupMobile');
+    var input = document.getElementById('mobileSearchInput');
+    if (!popup) return;
+    var q = new URLSearchParams(window.location.search).get('q');
+    if (q && input) input.value = q;
+    popup.style.cssText = 'display:flex !important;';
+    setTimeout(function() { if (input) input.focus(); }, 150);
+}
+function closeMobileSearch(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    var popup = document.getElementById('searchPopupMobile');
+    if (popup) popup.style.cssText = 'display:none !important;';
+}
+
+// Attach setelah semua script tema selesai load
+window.addEventListener('load', function() {
+    // Tombol buka search (semua .search-icon-mobile)
+    document.querySelectorAll('.search-icon-mobile').forEach(function(btn) {
+        // Clone untuk buang semua listener lama dari tema
+        var newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', openMobileSearch, true);
+    });
+
+    // Tombol tutup search
+    var closeBtn = document.querySelector('.close-mobile-search');
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileSearch, true);
+
+    // Klik backdrop
+    var popup = document.getElementById('searchPopupMobile');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) closeMobileSearch(e);
+        });
+    }
+
+    // ESC tutup
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMobileSearch();
+    });
+});
+</script>
+
 </head>
 <!-- =========================================
      WEBSITE CORE JS
@@ -1118,54 +1585,34 @@ function initUMKMTable(){
     const allData = [];
 
     /* =====================================
-       LIST KATEGORI VALID
-    ====================================== */
-
-    const kategoriValid = [
-
-        "Kuliner",
-        "Retail",
-        "Otomotif",
-        "Kesehatan",
-        "Jasa",
-        "Elektronik",
-        "Fashion"
-
-    ];
-
-    /* =====================================
        ICON KATEGORI
     ====================================== */
 
     function getKategoriIcon(kategori){
 
-        switch(kategori){
+        const iconMap = {
+            "Kuliner"                : "🍔",
+            "Retail"                 : "🛒",
+            "Otomotif"               : "🔧",
+            "Kesehatan"              : "🏥",
+            "Jasa"                   : "🛠️",
+            "Elektronik"             : "💻",
+            "Fashion"                : "👕",
+            "Akomodasi"              : "🏨",
+            "Kecantikan"             : "💄",
+            "Keuangan"               : "🏦",
+            "Hiburan & Rekreasi"     : "🎡",
+            "Pendidikan"             : "🎓",
+            "Furnitur & Rumah Tangga": "🪑",
+            "Hewan Peliharaan"       : "🐾",
+            "Energi & Kebutuhan Umum": "⚡",
+            "Organisasi Sosial"      : "🤝",
+            "Tempat Ibadah"          : "🕌",
+            "Properti"               : "🏠",
+            "Umum"                   : "📦"
+        };
 
-            case "Kuliner":
-                return "🍔";
-
-            case "Retail":
-                return "🛒";
-
-            case "Otomotif":
-                return "🔧";
-
-            case "Kesehatan":
-                return "🏥";
-
-            case "Jasa":
-                return "🛠️";
-
-            case "Elektronik":
-                return "💻";
-
-            case "Fashion":
-                return "👕";
-
-            default:
-                return "📍";
-
-        }
+        return iconMap[kategori] || "📍";
 
     }
 
@@ -1194,15 +1641,6 @@ function initUMKMTable(){
             feature.get("deskripsi") ||
             feature.get("Deskripsi") ||
             "";
-
-        // FILTER KATEGORI
-        if(
-            !kategoriValid.includes(
-                kategori
-            )
-        ){
-            return;
-        }
 
         allData.push({
 
@@ -1503,14 +1941,6 @@ function initUMKMTable(){
                     <!-- NAV -->
                     <div class="nav-outer">
 
-                        <!-- MOBILE TOGGLER -->
-                        <div class="mobile-nav-toggler">
-                            <img
-                                src="assets/images/icons/icon-bar-2.png"
-                                alt=""
-                            >
-                        </div>
-
                         <!-- MENU -->
                         <nav class="main-menu navbar-expand-md navbar-light">
                             <div
@@ -1520,13 +1950,11 @@ function initUMKMTable(){
 
                                 <ul class="navigation">
 
-                                    <li><a href="index.html">Beranda</a></li>
+                                    <li><a href="#map-wrapper">Peta</a></li>
 
-                                    <li><a href="index.html#tentang">Tentang</a></li>
+                                    <li><a href="#gis-dashboard">Dashboard</a></li>
 
-                                    <li><a href="index.html#layanan">Layanan</a></li>
-
-                                    <li><a href="index.html#peta">Peta</a></li>
+                                    <li><a href="#umkm-table-section">Data UMKM</a></li>
 
                                     <li class="dropdown">
 
@@ -1545,9 +1973,15 @@ function initUMKMTable(){
 
                                     </li>
 
-                                    <li><a href="index.html#ulasan">Ulasan</a></li>
+                                    <li><a href="index.html">Beranda</a></li>
 
                                     <li><a href="index.html#kontak">Kontak</a></li>
+
+                                </ul>
+
+                                    </li>
+
+                                  
 
                                 </ul>
 
@@ -1556,9 +1990,10 @@ function initUMKMTable(){
 
                     </div>
 
-                    <!-- SEARCH -->
+                    <!-- SEARCH + HAMBURGER kanan -->
                     <div class="navbar-right">
 
+                        <!-- SEARCH DESKTOP -->
                         <div class="search-form-two">
 
                             <form action="map.html" method="GET">
@@ -1576,6 +2011,22 @@ function initUMKMTable(){
 
                             </form>
 
+                        </div>
+
+                        <!-- ICON SEARCH MOBILE -->
+                        <button class="search-icon-mobile" aria-label="Cari UMKM">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="11" r="7"/>
+                                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+                            </svg>
+                        </button>
+
+                        <!-- HAMBURGER MOBILE -->
+                        <div class="mobile-nav-toggler mobile-toggler-right">
+                            <img
+                                src="assets/images/icons/icon-bar-2.png"
+                                alt=""
+                            >
                         </div>
 
                     </div>
@@ -1606,41 +2057,40 @@ function initUMKMTable(){
                         <!-- NAV -->
                         <div class="nav-outer">
 
-                            <div class="mobile-nav-toggler">
-                                <img
-                                    src="assets/images/icons/icon-bar-2.png"
-                                    alt=""
-                                >
-                            </div>
-
                             <nav class="main-menu navbar-expand-md navbar-light">
 
                                 <div class="collapse navbar-collapse show clearfix">
 
                                     <ul class="navigation">
 
-                                        <li><a href="index.html">Beranda</a></li>
+                                    <li><a href="#map-wrapper">Peta</a></li>
 
-                                        <li><a href="index.html#tentang">Tentang</a></li>
+                                    <li><a href="#gis-dashboard">Dashboard</a></li>
 
-                                        <li><a href="index.html#layanan">Layanan</a></li>
+                                    <li><a href="#umkm-table-section">Data UMKM</a></li>
 
-                                        <li><a href="index.html#peta">Peta</a></li>
+                                    <li class="dropdown">
 
-                                        <li class="dropdown">
+                                        <a href="index.html#kategori">Kategori</a>
 
-                                            <a href="index.html#kategori">Kategori</a>
+                                        <ul>
+                                            <li><a href="map.html?kategori=Kuliner">🍔 Kuliner</a></li>
+                                            <li><a href="map.html?kategori=Fashion">👕 Fashion</a></li>
+                                            <li><a href="map.html?kategori=Jasa">🛠️ Jasa</a></li>
+                                            <li><a href="map.html?kategori=Otomotif">🔧 Otomotif</a></li>
+                                            <li><a href="map.html?kategori=Kesehatan">🏥 Kesehatan</a></li>
+                                            <li><a href="map.html?kategori=Retail">🛒 Retail</a></li>
+                                            <li><a href="map.html?kategori=Elektronik">💻 Elektronik</a></li>
+                                            <li><a href="map.html?kategori=All">📍 Semua UMKM</a></li>
+                                        </ul>
 
-                                            <ul>
-                                                <li><a href="map.html?kategori=Kuliner">🍔 Kuliner</a></li>
-                                                <li><a href="map.html?kategori=Fashion">👕 Fashion</a></li>
-                                                <li><a href="map.html?kategori=Jasa">🛠️ Jasa</a></li>
-                                                <li><a href="map.html?kategori=Otomotif">🔧 Otomotif</a></li>
-                                                <li><a href="map.html?kategori=Kesehatan">🏥 Kesehatan</a></li>
-                                                <li><a href="map.html?kategori=Retail">🛒 Retail</a></li>
-                                                <li><a href="map.html?kategori=Elektronik">💻 Elektronik</a></li>
-                                                <li><a href="map.html?kategori=All">📍 Semua UMKM</a></li>
-                                            </ul>
+                                    </li>
+
+                                    <li><a href="index.html">Beranda</a></li>
+
+                                    <li><a href="index.html#kontak">Kontak</a></li>
+
+                                </ul>
 
                                         </li>
 
@@ -1656,7 +2106,7 @@ function initUMKMTable(){
 
                         </div>
 
-                        <!-- SEARCH -->
+                        <!-- SEARCH + HAMBURGER kanan -->
                         <div class="navbar-right">
 
                             <div class="search-form-two">
@@ -1676,6 +2126,22 @@ function initUMKMTable(){
 
                                 </form>
 
+                            </div>
+
+                            <!-- ICON SEARCH MOBILE -->
+                            <button class="search-icon-mobile" aria-label="Cari UMKM">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="11" cy="11" r="7"/>
+                                    <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+                                </svg>
+                            </button>
+
+                            <!-- HAMBURGER MOBILE -->
+                            <div class="mobile-nav-toggler mobile-toggler-right">
+                                <img
+                                    src="assets/images/icons/icon-bar-2.png"
+                                    alt=""
+                                >
                             </div>
 
                         </div>
@@ -1874,38 +2340,37 @@ function initUMKMTable(){
             </div>
 
             <!-- AREA -->
-            <div class="area-dashboard">
+       <!-- AREA -->
+<!-- AREA -->
+<div class="area-dashboard">
 
-                <h3>Dominasi Wilayah UMKM</h3>
+    <h3>Dominasi Wilayah UMKM</h3>
 
-                <div class="area-grid">
+    <div class="area-grid">
 
-                    <div class="area-card">
-                        <span>Utara</span>
-                        <b id="utara-dominan">-</b>
-                    </div>
-
-                    <div class="area-card">
-                        <span>Selatan</span>
-                        <b id="selatan-dominan">-</b>
-                    </div>
-
-                    <div class="area-card">
-                        <span>Timur</span>
-                        <b id="timur-dominan">-</b>
-                    </div>
-
-                    <div class="area-card">
-                        <span>Barat</span>
-                        <b id="barat-dominan">-</b>
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="area-card">
+            <span>🔵 Area Utara</span>
+            <b id="utara-dominan">-</b>
         </div>
 
+        <div class="area-card">
+            <span>🔴 Area Selatan</span>
+            <b id="selatan-dominan">-</b>
+        </div>
+
+        <div class="area-card">
+            <span>🟢 Area Timur</span>
+            <b id="timur-dominan">-</b>
+        </div>
+
+        <div class="area-card">
+            <span>🟠 Area Barat</span>
+            <b id="barat-dominan">-</b>
+        </div>
+
+    </div>
+
+</div>
         <!-- =========================================
              FILTER BUTTON
         ========================================== -->
@@ -1959,6 +2424,23 @@ function initUMKMTable(){
             <div class="map-info-top">
                 <strong>GIS UMKM Mulyoagung</strong><br>
                 Klik titik usaha untuk melihat analisis spasial
+            </div>
+
+            <!-- TOMBOL LEGENDA MOBILE -->
+            <button id="legend-toggle-btn" onclick="toggleLegendMobile()" title="Legenda">
+                🗺️
+            </button>
+
+            <!-- PANEL LEGENDA MOBILE -->
+            <div id="legend-mobile-panel">
+                <h6>Legenda</h6>
+                <div class="legend-item"><span class="legend-dot" style="background:#f97316"></span>Kuliner</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>Retail</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span>Otomotif</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>Kesehatan</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#10b981"></span>Jasa</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#06b6d4"></span>Elektronik</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#ec4899"></span>Fashion</div>
             </div>
 
             <!-- MAP -->
@@ -2329,6 +2811,10 @@ function initUMKMTable(){
     <script src="layers/LokasiTempatIbadah_3.js"></script>
     <script src="layers/LokasiSekolah_4.js"></script>
     <script src="layers/LokasiBisnisMulyoAgung_5.js"></script>
+    <script src="layers/AreaUtara_6.js"></script>
+    <script src="layers/AreaTimur_8.js"></script>
+    <script src="layers/AreaBarat_9.js"></script>
+    <script src="layers/AreaSelatan_7.js"></script>
 
     <!-- STYLE -->
     <script src="styles/AreaDesaMulyoAgung_1_style.js"></script>
@@ -2336,6 +2822,10 @@ function initUMKMTable(){
     <script src="styles/LokasiTempatIbadah_3_style.js"></script>
     <script src="styles/LokasiSekolah_4_style.js"></script>
     <script src="styles/LokasiBisnisMulyoAgung_5_style.js"></script>
+    <script src="styles/AreaUtara_6_style.js"></script>
+    <script src="styles/AreaTimur_8_style.js"></script>
+    <script src="styles/AreaBarat_9_style.js"></script>
+    <script src="styles/AreaSelatan_7_style.js"></script>
 
     <!-- MAP -->
     <script src="./layers/layers.js"></script>
@@ -2347,154 +2837,123 @@ function initUMKMTable(){
     ========================================== -->
     <script>
 
-        function updateDashboard() {
+// =============================================
+// POINT-IN-POLYGON (Ray Casting Algorithm)
+// =============================================
+function pointInPolygon(px, py, polygonCoords) {
+    let inside = false;
+    const coords = polygonCoords[0]; // ring pertama
+    for (let i = 0, j = coords.length - 1; i < coords.length; j = i++) {
+        const xi = coords[i][0], yi = coords[i][1];
+        const xj = coords[j][0], yj = coords[j][1];
+        const intersect = ((yi > py) !== (yj > py)) &&
+            (px < (xj - xi) * (py - yi) / (yj - yi) + xi);
+        if (intersect) inside = !inside;
+    }
+    return inside;
+}
 
-            if (!window.lyr_LokasiBisnisMulyoAgung_5) return;
+// Ambil koordinat polygon dari layer area (sudah di-project ke EPSG:3857)
+function getPolygonCoords(layer) {
+    if (!layer) return null;
+    const features = layer.getSource().getFeatures();
+    if (!features.length) return null;
+    const geom = features[0].getGeometry();
+    return geom.getCoordinates();
+}
 
-            const source = lyr_LokasiBisnisMulyoAgung_5.getSource();
+// =============================================
+// SIMPAN DATA AREA UNTUK DIPAKAI TOOLTIP HOVER
+// =============================================
+window.areaData = { utara: {}, selatan: {}, timur: {}, barat: {} };
 
-            if (!source) return;
+function updateDashboard() {
 
-            const features = source.getFeatures();
+    if (!window.lyr_LokasiBisnisMulyoAgung_5) return;
+    const source = lyr_LokasiBisnisMulyoAgung_5.getSource();
+    if (!source) return;
+    const features = source.getFeatures();
+    if (!features.length) return;
 
-            if (!features.length) return;
+    // Ambil polygon tiap area
+    const polyUtara   = getPolygonCoords(window.lyr_AreaUtara_6);
+    const polySelatan = getPolygonCoords(window.lyr_AreaSelatan_7);
+    const polyTimur   = getPolygonCoords(window.lyr_AreaTimur_8);
+    const polyBarat   = getPolygonCoords(window.lyr_AreaBarat_9);
 
-            const count = {
-                Kuliner: 0,
-                Retail: 0,
-                Otomotif: 0,
-                Kesehatan: 0,
-                Jasa: 0,
-                Elektronik: 0,
-                Fashion: 0
-            };
+    const count = {};
+    const area  = { utara: {}, selatan: {}, timur: {}, barat: {} };
 
-            const area = {
-                utara: {},
-                selatan: {},
-                timur: {},
-                barat: {}
-            };
+    features.forEach(function(feature) {
+        const style = feature.getStyle();
+        if (style && style.getImage() === null) return;
 
-           // AMBIL CENTER ASLI DARI SELURUH DATA UMKM
-const allCoords = features.map(f =>
-    f.getGeometry().getCoordinates()
-);
+        const kategori = feature.get('jenis') || feature.get('kategori');
+        if (!kategori) return;
 
-const xs = allCoords.map(c => c[0]);
-const ys = allCoords.map(c => c[1]);
+        // Hitung total per kategori
+        count[kategori] = (count[kategori] || 0) + 1;
 
-const minX = Math.min(...xs);
-const maxX = Math.max(...xs);
+        const coord = feature.getGeometry().getCoordinates();
+        const px = coord[0], py = coord[1];
 
-const minY = Math.min(...ys);
-const maxY = Math.max(...ys);
+        // Cek masuk polygon mana (point-in-polygon)
+        if (polyUtara   && pointInPolygon(px, py, polyUtara))
+            area.utara[kategori]   = (area.utara[kategori]   || 0) + 1;
 
-// TITIK TENGAH SELURUH WILAYAH
-const centerX = (minX + maxX) / 2;
-const centerY = (minY + maxY) / 2;
+        if (polySelatan && pointInPolygon(px, py, polySelatan))
+            area.selatan[kategori] = (area.selatan[kategori] || 0) + 1;
 
-            features.forEach(function (feature) {
+        if (polyTimur   && pointInPolygon(px, py, polyTimur))
+            area.timur[kategori]   = (area.timur[kategori]   || 0) + 1;
 
-                const style = feature.getStyle();
+        if (polyBarat   && pointInPolygon(px, py, polyBarat))
+            area.barat[kategori]   = (area.barat[kategori]   || 0) + 1;
+    });
 
-                if (style && style.getImage() === null) {
-                    return;
-                }
+    // Update card kategori (dinamis dari data asli)
+    const emojiMap = {
+        Kuliner:'🍔', Retail:'🛒', Otomotif:'🔧',
+        Kesehatan:'🏥', Jasa:'🛠️', Elektronik:'💻', Fashion:'👕',
+        Akomodasi:'🏨', Kecantikan:'💄', Keuangan:'🏦',
+        'Hiburan & Rekreasi':'🎡', Pendidikan:'🎓',
+        'Furnitur & Rumah Tangga':'🪑', 'Hewan Peliharaan':'🐾',
+        'Energi & Kebutuhan Umum':'⚡', 'Organisasi Sosial':'🤝',
+        'Tempat Ibadah':'🕌', Properti:'🏠', Umum:'📦'
+    };
 
-                const kategori =
-                    feature.get('jenis') ||
-                    feature.get('kategori');
+    Object.keys(count).forEach(k => {
+        const idMap = {
+            Kuliner:'count-kuliner', Retail:'count-retail', Otomotif:'count-otomotif',
+            Kesehatan:'count-kesehatan', Jasa:'count-jasa', Elektronik:'count-elektronik',
+            Fashion:'count-fashion'
+        };
+        const el = document.getElementById(idMap[k]);
+        if (el) el.innerHTML = count[k] + " UMKM";
+    });
 
-                if (!kategori) return;
+    function getDominan(obj) {
+        const keys = Object.keys(obj);
+        if (!keys.length) return "-";
+        let max = 0, dominan = "-";
+        keys.forEach(k => { if (obj[k] > max) { max = obj[k]; dominan = k; } });
+        return dominan;
+    }
 
-                if (count[kategori] !== undefined) {
-                    count[kategori]++;
-                }
+    document.getElementById('utara-dominan').innerHTML   = getDominan(area.utara);
+    document.getElementById('selatan-dominan').innerHTML = getDominan(area.selatan);
+    document.getElementById('timur-dominan').innerHTML   = getDominan(area.timur);
+    document.getElementById('barat-dominan').innerHTML   = getDominan(area.barat);
 
-                const coord =
-                    feature.getGeometry().getCoordinates();
+    // Simpan ke global untuk tooltip hover
+    window.areaData = area;
+    window.emojiMap = emojiMap;
+}
 
-                const x = coord[0];
-                const y = coord[1];
-
-                if (y > centerY) {
-                    area.utara[kategori] =
-                        (area.utara[kategori] || 0) + 1;
-                } else {
-                    area.selatan[kategori] =
-                        (area.selatan[kategori] || 0) + 1;
-                }
-
-                if (x > centerX) {
-                    area.timur[kategori] =
-                        (area.timur[kategori] || 0) + 1;
-                } else {
-                    area.barat[kategori] =
-                        (area.barat[kategori] || 0) + 1;
-                }
-
-            });
-
-            document.getElementById('count-kuliner').innerHTML =
-                count.Kuliner + " UMKM";
-
-            document.getElementById('count-retail').innerHTML =
-                count.Retail + " UMKM";
-
-            document.getElementById('count-otomotif').innerHTML =
-                count.Otomotif + " UMKM";
-
-            document.getElementById('count-kesehatan').innerHTML =
-                count.Kesehatan + " UMKM";
-
-            document.getElementById('count-jasa').innerHTML =
-                count.Jasa + " UMKM";
-
-            document.getElementById('count-elektronik').innerHTML =
-                count.Elektronik + " UMKM";
-
-            document.getElementById('count-fashion').innerHTML =
-                count.Fashion + " UMKM";
-
-            function getDominan(obj) {
-
-                const keys = Object.keys(obj);
-
-                if (!keys.length) return "-";
-
-                let max = 0;
-                let dominan = "-";
-
-                keys.forEach(function (k) {
-
-                    if (obj[k] > max) {
-                        max = obj[k];
-                        dominan = k;
-                    }
-
-                });
-
-                return dominan;
-            }
-
-            document.getElementById('utara-dominan').innerHTML =
-                getDominan(area.utara);
-
-            document.getElementById('selatan-dominan').innerHTML =
-                getDominan(area.selatan);
-
-            document.getElementById('timur-dominan').innerHTML =
-                getDominan(area.timur);
-
-            document.getElementById('barat-dominan').innerHTML =
-                getDominan(area.barat);
-
-        }
-
-        setTimeout(updateDashboard, 1500);
-
+setTimeout(updateDashboard, 1500);
     </script>
+
+    
 
     <!-- =========================================
          MAP OVERLAY LOCK
@@ -2916,18 +3375,86 @@ document.addEventListener("click", function(e){
 <script>
 
 // ======================================================
-// HOVER TOOLTIP POINT UMKM
-// SEMENTARA TANPA PEMBAGIAN AREA
+// SHARED HELPERS — TOOLTIP UMKM & AREA
 // ======================================================
 
-const tooltip =
-    document.getElementById(
-        "hover-tooltip"
-    );
+const tooltip = document.getElementById("hover-tooltip");
 
+// Emoji per kategori
+function _emojiKat(k) {
+    const m = {
+        Kuliner:"🍔", Retail:"🛒", Otomotif:"🔧",
+        Kesehatan:"🏥", Jasa:"🛠️", Elektronik:"💻", Fashion:"👕"
+    };
+    return m[k] || "📍";
+}
+
+// Warna badge per kategori
+function _warnaBadge(k) {
+    const m = {
+        Kuliner:"#f97316", Retail:"#8b5cf6", Otomotif:"#6b7280",
+        Kesehatan:"#ef4444", Jasa:"#0ea5e9", Elektronik:"#2563eb", Fashion:"#ec4899"
+    };
+    return m[k] || "#374151";
+}
+
+// Posisi tooltip selalu ke KANAN kursor, vertikal tengah
+function _posisiTooltip(evt) {
+    const MARGIN = 18;
+    const px = evt.originalEvent.pageX;
+    const py = evt.originalEvent.pageY;
+    const tw = tooltip.offsetWidth  || 260;
+    const th = tooltip.offsetHeight || 200;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Horizontal: kanan kursor, fallback kiri jika mepet
+    let left = px + MARGIN;
+    if (left + tw + 10 > vw) left = px - tw - MARGIN;
+
+    // Vertikal: tengah kursor, clamp ke viewport
+    let top = py - th / 2;
+    if (top < 8) top = 8;
+    if (top + th + 8 > vh) top = vh - th - 8;
+
+    tooltip.style.left = left + "px";
+    tooltip.style.top  = top  + "px";
+}
+
+// ── Config area layer ──────────────────────────────────
+const AREA_LAYER_CONFIG = [
+    { getLayer: () => window.lyr_AreaUtara_6, key: "utara", label: "Area Utara", badge: "🔵" },
+    { getLayer: () => window.lyr_AreaSelatan_7, key: "selatan", label: "Area Selatan", badge: "🔴" },
+    { getLayer: () => window.lyr_AreaTimur_8, key: "timur", label: "Area Timur", badge: "🟢" },
+    { getLayer: () => window.lyr_AreaBarat_9, key: "barat", label: "Area Barat", badge: "🟠" }
+];
+
+// Ambil & sort kategori dari window.areaData
+function _sortedKategori(areaKey) {
+    const obj = (window.areaData && window.areaData[areaKey]) || {};
+    return Object.entries(obj).sort((a, b) => b[1] - a[1]);
+}
+
+// Render list kategori untuk tooltip area
+function _renderKategoriList(sorted) {
+    if (!sorted.length) return '<div style="color:#6b7280;font-size:12px;padding:6px 0;">Tidak ada data</div>';
+    return sorted.slice(0, 5).map(([k, n], i) => `
+        <div style="
+            display:flex;justify-content:space-between;align-items:center;
+            padding:6px 10px;border-radius:9px;margin-bottom:4px;
+            background:${i === 0 ? 'rgba(37,99,235,0.22)' : 'rgba(255,255,255,0.06)'};
+        ">
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:#e5e7eb;">
+                ${_emojiKat(k)} ${k}
+                ${i === 0 ? '<span style="font-size:10px;background:#2563eb;color:#fff;padding:1px 7px;border-radius:99px;">Dominan</span>' : ''}
+            </span>
+            <b style="font-size:13px;color:${i === 0 ? '#93c5fd' : '#9ca3af'};margin-left:10px;">${n}</b>
+        </div>
+    `).join('');
+}
 
 // ======================================================
-// POINTER MOVE
+// POINTER MOVE — UMKM
 // ======================================================
 
 map.on(
@@ -2936,42 +3463,18 @@ map.on(
 
         if (!tooltip) return;
 
-        let businessFeature =
-            null;
-
-        // =====================================
-        // DETEKSI TITIK UMKM
-        // =====================================
+        let businessFeature = null;
 
         map.forEachFeatureAtPixel(
-
             evt.pixel,
-
             function(feature, layer) {
-
-                if (
-                    layer ===
-                    lyr_LokasiBisnisMulyoAgung_5
-                ) {
-
-                    businessFeature =
-                        feature;
-
+                if (layer === lyr_LokasiBisnisMulyoAgung_5) {
+                    businessFeature = feature;
                     return true;
-
                 }
-
             },
-
-            {
-                hitTolerance: 16
-            }
-
+            { hitTolerance: 16 }
         );
-
-        // =====================================
-        // JIKA ADA POINT UMKM
-        // =====================================
 
         if (businessFeature) {
 
@@ -2996,83 +3499,51 @@ map.on(
                 businessFeature.get("Deskripsi") ||
                 "Tidak ada deskripsi";
 
-            // =================================
-            // TOOLTIP CONTENT
-            // =================================
+            const warna = _warnaBadge(kategori);
 
             tooltip.innerHTML = `
 
                 <div style="
-                    font-weight:700;
-                    font-size:15px;
+                    display:flex;align-items:center;gap:8px;
                     margin-bottom:10px;
-                    color:#fff;
+                    padding-bottom:10px;
+                    border-bottom:1px solid rgba(255,255,255,0.1);
                 ">
-                    ${nama}
+                    <span style="font-size:22px;">${_emojiKat(kategori)}</span>
+                    <div>
+                        <div style="font-weight:700;font-size:15px;color:#fff;line-height:1.3;">
+                            ${nama}
+                        </div>
+                        <span style="
+                            display:inline-block;margin-top:3px;
+                            font-size:11px;font-weight:700;
+                            background:${warna};color:#fff;
+                            padding:2px 8px;border-radius:99px;
+                        ">${kategori}</span>
+                    </div>
                 </div>
 
-                <div style="
-                    margin-bottom:6px;
-                    line-height:1.5;
-                ">
-                    <b>Kategori:</b><br>
-                    ${kategori}
+                <div style="margin-bottom:8px;">
+                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6b7280;margin-bottom:3px;">Alamat</div>
+                    <div style="font-size:13px;color:#d1d5db;line-height:1.5;">${alamat}</div>
                 </div>
 
-                <div style="
-                    margin-bottom:6px;
-                    line-height:1.5;
-                ">
-                    <b>Alamat:</b><br>
-                    ${alamat}
-                </div>
-
-                <div style="
-                    line-height:1.6;
-                ">
-                    <b>Deskripsi:</b><br>
-                    ${deskripsi}
+                <div>
+                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6b7280;margin-bottom:3px;">Deskripsi</div>
+                    <div style="font-size:13px;color:#d1d5db;line-height:1.6;">${deskripsi}</div>
                 </div>
 
             `;
 
-            // =================================
-            // POSISI TOOLTIP
-            // =================================
-
-            tooltip.style.left =
-                (
-                    evt.originalEvent.pageX + 18
-                ) + "px";
-
-            tooltip.style.top =
-                (
-                    evt.originalEvent.pageY + 18
-                ) + "px";
-
-            tooltip.style.display =
-                "block";
-
-            map
-                .getTargetElement()
-                .style.cursor =
-                "pointer";
-
+            _posisiTooltip(evt);
+            tooltip.style.display = "block";
+            map.getTargetElement().style.cursor = "pointer";
             return;
 
         }
 
-        // =====================================
-        // HIDE TOOLTIP
-        // =====================================
-
-        tooltip.style.display =
-            "none";
-
-        map
-            .getTargetElement()
-            .style.cursor =
-            "default";
+        tooltip.style.display = "none";
+        map.getTargetElement().style.cursor = "default";
 
     }
 );
@@ -3084,17 +3555,92 @@ map.on(
 
 map.getViewport()
 .addEventListener(
-
     "mouseout",
-
     function() {
-
-        tooltip.style.display =
-            "none";
-
+        tooltip.style.display = "none";
     }
-
 );
+
+</script>
+
+<script>
+
+// ======================================================
+// POINTER MOVE — POLYGON AREA
+// ======================================================
+
+map.on("pointermove", function(evt) {
+
+    // Skip jika kursor di atas titik UMKM
+    let adaUMKM = false;
+    map.forEachFeatureAtPixel(
+        evt.pixel,
+        function(feature, layer) {
+            if (layer === lyr_LokasiBisnisMulyoAgung_5) { adaUMKM = true; return true; }
+        },
+        { hitTolerance: 16 }
+    );
+    if (adaUMKM) return;
+
+    // Cek polygon area
+    let areaHit = null;
+    map.forEachFeatureAtPixel(
+        evt.pixel,
+        function(feature, layer) {
+            for (const cfg of AREA_LAYER_CONFIG) {
+                if (layer === cfg.getLayer()) { areaHit = cfg; return true; }
+            }
+        },
+        { hitTolerance: 4 }
+    );
+
+    if (!areaHit) return;
+
+    const sorted  = _sortedKategori(areaHit.key);
+    const dominan = sorted.length ? sorted[0][0] : "-";
+    const total   = sorted.reduce((s, [, n]) => s + n, 0);
+
+    tooltip.innerHTML = `
+
+        <div style="
+            display:flex;align-items:center;gap:8px;
+            margin-bottom:4px;
+            padding-bottom:10px;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+        ">
+            <span style="font-size:20px;">${areaHit.badge}</span>
+            <div>
+                <div style="font-weight:700;font-size:15px;color:#fff;">${areaHit.label}</div>
+                <div style="font-size:11px;color:#9ca3af;margin-top:1px;">${total} UMKM tercatat</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom:10px;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6b7280;margin-bottom:6px;">Kategori Dominan</div>
+            <div style="
+                display:flex;align-items:center;gap:10px;
+                background:rgba(37,99,235,.22);border-radius:10px;padding:8px 12px;
+            ">
+                <span style="font-size:24px;">${_emojiKat(dominan)}</span>
+                <div>
+                    <div style="font-weight:700;font-size:14px;color:#fff;">${dominan}</div>
+                    <div style="font-size:12px;color:#93c5fd;">${sorted.length ? sorted[0][1] + ' usaha' : ''}</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6b7280;margin-bottom:6px;">Sebaran Kategori</div>
+            ${_renderKategoriList(sorted)}
+        </div>
+
+    `;
+
+    _posisiTooltip(evt);
+    tooltip.style.display = "block";
+    map.getTargetElement().style.cursor = "crosshair";
+
+});
 
 </script>
 <script>
@@ -3118,6 +3664,258 @@ map.getViewport()
             }
         });
     }
+</script>
+
+<!-- =========================================
+     SEARCH POPUP MOBILE
+========================================== -->
+<!-- =========================================
+     SEARCH MOBILE — form GET sama persis desktop
+========================================== -->
+<div class="search-popup-mobile" id="searchPopupMobile">
+    <div class="search-inner">
+        <button class="close-mobile-search" onclick="closeMobileSearch()" type="button">✕</button>
+        <div class="search-inner-title">Cari UMKM</div>
+        <form action="map.html" method="GET">
+            <input
+                type="search"
+                name="q"
+                placeholder="Ketik nama UMKM..."
+                autocomplete="off"
+                id="mobileSearchInput"
+                value=""
+            >
+            <button type="submit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+/* Event listener backdrop & keyboard untuk search popup */
+document.addEventListener('DOMContentLoaded', function() {
+    var popup = document.getElementById('searchPopupMobile');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === this) closeMobileSearch();
+        });
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMobileSearch();
+    });
+});
+</script>
+
+<!-- =========================================
+     SEARCH + LEGENDA + TABLE FIX
+========================================== -->
+<style>
+
+/* ===== TABEL RESPONSIVE CARD MODE (mobile/tablet) ===== */
+@media (max-width: 768px) {
+    .umkm-table-wrapper { border: none; border-radius: 0; background: transparent; }
+    #umkm-table { min-width: unset !important; }
+    #umkm-table thead { display: none; }
+
+    #umkm-table tbody tr {
+        display: block;
+        margin-bottom: 12px;
+        border-radius: 16px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 3px 12px rgba(0,0,0,.07);
+        background: #fff;
+        overflow: hidden;
+    }
+
+    /* Nama usaha — tampil besar di atas sebagai card header */
+    #umkm-table tbody td.table-nama {
+        display: block;
+        padding: 14px 16px 10px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 15px;
+        font-weight: 700;
+        color: #111827;
+        background: #f8fbff;
+    }
+    #umkm-table tbody td.table-nama::before { display: none; }
+
+    /* Kolom lain — dua kolom label : nilai */
+    #umkm-table tbody td {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        align-items: flex-start;
+        padding: 9px 16px;
+        border-bottom: 1px solid #f9fafb;
+        font-size: 13px;
+        gap: 8px;
+        line-height: 1.5;
+    }
+
+    #umkm-table tbody td:last-child {
+        border-bottom: none;
+        padding-bottom: 14px;
+    }
+
+    #umkm-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #6b7280;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        padding-top: 2px;
+        white-space: nowrap;
+    }
+
+    #umkm-table tbody td.table-no { display: none; }
+    .table-deskripsi { min-width: unset !important; }
+
+    /* Kategori badge tetap inline */
+    #umkm-table tbody td .table-kategori {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+}
+
+/* ===== LEGENDA LAYER SWITCHER — KOMPAK ===== */
+.layer-switcher {
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important;
+    bottom: auto !important;
+}
+.layer-switcher button {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 13px !important;
+}
+.layer-switcher.shown panel,
+.layer-switcher panel {
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+    min-width: 140px !important;
+    max-width: 170px !important;
+    max-height: 260px !important;
+    overflow-y: auto !important;
+    line-height: 1.4 !important;
+}
+.layer-switcher li label {
+    font-size: 11px !important;
+}
+.layer-switcher li {
+    margin: 2px 0 !important;
+}
+
+/* ===== LEGENDA SEMBUNYI DI MOBILE/TABLET ===== */
+@media (max-width: 991px) {
+    .layer-switcher { display: none !important; }
+
+    /* Tombol toggle legenda */
+    #legend-toggle-btn {
+        display: flex !important;
+    }
+}
+
+/* Tombol toggle legenda — default hidden di desktop */
+#legend-toggle-btn {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Legenda mini di mobile — panel custom */
+#legend-mobile-panel {
+    display: none;
+    position: absolute;
+    top: 58px;
+    right: 15px;
+    z-index: 9998;
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.15);
+    font-size: 11px;
+    min-width: 140px;
+    max-width: 170px;
+    border: 1px solid #e5e7eb;
+}
+#legend-mobile-panel.open { display: block; }
+#legend-mobile-panel h6 {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 5px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 4px 0;
+    color: #374151;
+    font-size: 11px;
+}
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+</style>
+
+<script>
+/* =============================================
+   TABEL — tambah data-label ke setiap td
+   agar mode card di mobile bisa tampil label
+============================================= */
+(function() {
+    var labels = ['No', 'Kategori', 'Nama Usaha', 'Alamat', 'Deskripsi'];
+    function tagTableCells() {
+        var rows = document.querySelectorAll('#umkm-table tbody tr');
+        if (!rows.length) { setTimeout(tagTableCells, 800); return; }
+        rows.forEach(function(row) {
+            var cells = row.querySelectorAll('td');
+            cells.forEach(function(td, i) {
+                if (labels[i]) td.setAttribute('data-label', labels[i]);
+            });
+        });
+    }
+    tagTableCells();
+
+    var tbody = document.getElementById('umkm-table-body');
+    if (tbody) {
+        var obs = new MutationObserver(tagTableCells);
+        obs.observe(tbody, { childList: true });
+    }
+})();
+
+/* =============================================
+   LEGENDA MOBILE — toggle panel
+============================================= */
+function toggleLegendMobile() {
+    var panel = document.getElementById('legend-mobile-panel');
+    if (!panel) return;
+    panel.classList.toggle('open');
+}
 </script>
 
 </body>

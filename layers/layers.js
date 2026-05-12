@@ -71,6 +71,64 @@ var lyr_LokasiSekolah_4 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/LokasiSekolah_4.png" /> Lokasi Sekolah'
             });
+
+
+var format_AreaUtara_6 = new ol.format.GeoJSON();
+var features_AreaUtara_6 = format_AreaUtara_6.readFeatures(json_AreaUtara_6,
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_AreaUtara_6 = new ol.source.Vector({ attributions: ' ' });
+jsonSource_AreaUtara_6.addFeatures(features_AreaUtara_6);
+var lyr_AreaUtara_6 = new ol.layer.Vector({
+                declutter: false,
+                source: jsonSource_AreaUtara_6,
+                style: style_AreaUtara_6,
+                popuplayertitle: 'Area Utara',
+                interactive: true,
+                title: '<svg width="16" height="16" style="display:inline-block;vertical-align:middle;margin-right:4px;border-radius:3px;" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" fill="rgba(59,130,246,0.25)" stroke="#2563eb" stroke-width="2"/></svg> Area Utara'
+            });
+
+var format_AreaTimur_8 = new ol.format.GeoJSON();
+var features_AreaTimur_8 = format_AreaTimur_8.readFeatures(json_AreaTimur_8,
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_AreaTimur_8 = new ol.source.Vector({ attributions: ' ' });
+jsonSource_AreaTimur_8.addFeatures(features_AreaTimur_8);
+var lyr_AreaTimur_8 = new ol.layer.Vector({
+                declutter: false,
+                source: jsonSource_AreaTimur_8,
+                style: style_AreaTimur_8,
+                popuplayertitle: 'Area Timur',
+                interactive: true,
+                title: '<svg width="16" height="16" style="display:inline-block;vertical-align:middle;margin-right:4px;border-radius:3px;" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" fill="rgba(16,185,129,0.25)" stroke="#059669" stroke-width="2"/></svg> Area Timur'
+            });
+
+var format_AreaBarat_9 = new ol.format.GeoJSON();
+var features_AreaBarat_9 = format_AreaBarat_9.readFeatures(json_AreaBarat_9,
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_AreaBarat_9 = new ol.source.Vector({ attributions: ' ' });
+jsonSource_AreaBarat_9.addFeatures(features_AreaBarat_9);
+var lyr_AreaBarat_9 = new ol.layer.Vector({
+                declutter: false,
+                source: jsonSource_AreaBarat_9,
+                style: style_AreaBarat_9,
+                popuplayertitle: 'Area Barat',
+                interactive: true,
+                title: '<svg width="16" height="16" style="display:inline-block;vertical-align:middle;margin-right:4px;border-radius:3px;" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" fill="rgba(245,158,11,0.25)" stroke="#d97706" stroke-width="2"/></svg> Area Barat'
+            });
+
+var format_AreaSelatan_7 = new ol.format.GeoJSON();
+var features_AreaSelatan_7 = format_AreaSelatan_7.readFeatures(json_AreaSelatan_7,
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_AreaSelatan_7 = new ol.source.Vector({ attributions: ' ' });
+jsonSource_AreaSelatan_7.addFeatures(features_AreaSelatan_7);
+var lyr_AreaSelatan_7 = new ol.layer.Vector({
+                declutter: false,
+                source: jsonSource_AreaSelatan_7,
+                style: style_AreaSelatan_7,
+                popuplayertitle: 'Area Selatan',
+                interactive: true,
+                title: '<svg width="16" height="16" style="display:inline-block;vertical-align:middle;margin-right:4px;border-radius:3px;" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" fill="rgba(239,68,68,0.25)" stroke="#dc2626" stroke-width="2"/></svg> Area Selatan'
+            });
+
 var format_LokasiBisnisMulyoAgung_5 = new ol.format.GeoJSON();
 var features_LokasiBisnisMulyoAgung_5 = format_LokasiBisnisMulyoAgung_5.readFeatures(json_LokasiBisnisMulyoAgung_5, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -87,8 +145,13 @@ var lyr_LokasiBisnisMulyoAgung_5 = new ol.layer.Vector({
                 title: '<img src="styles/legend/LokasiBisnisMulyoAgung_5.png" /> Lokasi Bisnis MulyoAgung'
             });
 
-lyr_OpenStreetMap_0.setVisible(true);lyr_AreaDesaMulyoAgung_1.setVisible(true);lyr_JalanUtama_2.setVisible(true);lyr_LokasiTempatIbadah_3.setVisible(true);lyr_LokasiSekolah_4.setVisible(true);lyr_LokasiBisnisMulyoAgung_5.setVisible(true);
-var layersList = [lyr_OpenStreetMap_0,lyr_AreaDesaMulyoAgung_1,lyr_JalanUtama_2,lyr_LokasiTempatIbadah_3,lyr_LokasiSekolah_4,lyr_LokasiBisnisMulyoAgung_5];
+            
+lyr_OpenStreetMap_0.setVisible(true);lyr_AreaDesaMulyoAgung_1.setVisible(true);lyr_JalanUtama_2.setVisible(true);lyr_LokasiTempatIbadah_3.setVisible(true);lyr_LokasiSekolah_4.setVisible(true);lyr_AreaUtara_6.setVisible(true);
+lyr_AreaTimur_8.setVisible(true);
+lyr_AreaBarat_9.setVisible(true);
+lyr_AreaSelatan_7.setVisible(true);
+lyr_LokasiBisnisMulyoAgung_5.setVisible(true);
+var layersList = [lyr_OpenStreetMap_0,lyr_AreaDesaMulyoAgung_1,lyr_JalanUtama_2,lyr_LokasiTempatIbadah_3,lyr_LokasiSekolah_4,lyr_AreaUtara_6,lyr_AreaTimur_8,lyr_AreaBarat_9,lyr_AreaSelatan_7,lyr_LokasiBisnisMulyoAgung_5];
 lyr_AreaDesaMulyoAgung_1.set('fieldAliases', {'id': 'id', 'Name': 'Name', 'Luas_meter': 'Luas_meter', });
 lyr_JalanUtama_2.set('fieldAliases', {'id': 'id', 'Nama': 'Nama', });
 lyr_LokasiTempatIbadah_3.set('fieldAliases', {'id': 'id', 'nama': 'nama', 'alamat': 'alamat', });

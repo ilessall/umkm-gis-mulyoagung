@@ -1,4 +1,3 @@
-
 /* Governlia HTML Template  */
 
 /*** 
@@ -4601,21 +4600,178 @@ img {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    background: #eee; /* ini penting biar gak putih kosong */
+    background: #eee;
 }
 
+/* =====================================================
+   HEADER FIX — Search desktop + Search icon mobile
+   + Popup mobile CSS-only (checkbox system)
+===================================================== */
 
+.main-header .header-upper .inner-container {
+    flex-wrap: nowrap !important;
+}
 
+.main-header .header-upper .navbar-right {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+    margin-left: 30px !important;
+}
 
+.main-header .header-upper .search-form-two {
+    display: flex !important;
+    align-items: center !important;
+}
 
+/* Search icon mobile — default hidden */
+.search-icon-mobile-idx {
+    display: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    line-height: 1;
+}
 
+/* Popup mobile */
+#idxSearchPopup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 999999999;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+    backdrop-filter: blur(4px);
+}
 
+#idx-search-toggle:checked ~ #idxSearchPopup {
+    display: flex !important;
+}
 
+.idx-search-inner {
+    background: #1f2937;
+    border-radius: 20px;
+    padding: 24px 20px 20px;
+    width: 92%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,.6);
+    border: 1px solid rgba(255,255,255,0.08);
+}
 
+.idx-search-inner .idx-search-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
+.idx-search-inner form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 
+.idx-search-inner input[type="search"] {
+    flex: 1;
+    background: #374151;
+    border: 1px solid #4b5563;
+    border-radius: 12px;
+    padding: 13px 16px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+    height: auto;
+}
 
+.idx-search-inner input[type="search"]:focus {
+    border-color: #2563eb;
+}
 
+.idx-search-inner input[type="search"]::placeholder {
+    color: #9ca3af;
+}
 
+.idx-search-inner button[type="submit"] {
+    background: #2563eb;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    padding: 13px 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
 
+.idx-search-inner button[type="submit"]:hover {
+    background: #1d4ed8;
+}
 
+.idx-close-btn {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ef4444;
+    border: 2px solid #1f2937;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.idx-close-btn:hover {
+    background: #dc2626;
+}
+
+/* Hamburger — hidden di desktop, tampil di tablet/mobile */
+.main-header .header-upper .navbar-right .mobile-nav-toggler {
+    display: none;
+}
+
+@media (max-width: 991px) {
+
+    .main-header .header-upper .navbar-right .search-form-two,
+    .sticky-header .navbar-right .search-form-two {
+        display: none !important;
+    }
+
+    .search-icon-mobile-idx {
+        display: flex !important;
+    }
+
+    .main-header .header-upper .navbar-right .mobile-nav-toggler {
+        display: flex !important;
+        align-items: center;
+    }
+
+    #idxSearchPopup {
+        padding-top: 60px;
+    }
+
+    .idx-search-inner {
+        width: 94%;
+        padding: 20px 16px 16px;
+    }
+}

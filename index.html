@@ -62,11 +62,6 @@
             <!-- Nav -->
             <div class="nav-outer">
 
-                <!-- Mobile Toggle -->
-                <div class="mobile-nav-toggler">
-                    <img src="assets/images/icons/icon-bar-2.png" alt="">
-                </div>
-
                 <!-- Main Menu -->
                 <nav class="main-menu navbar-expand-md navbar-light">
                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
@@ -115,23 +110,32 @@
                 </nav>
             </div>
 
-  <!-- Search -->
+  <!-- Search + Mobile -->
 <div class="navbar-right">
     <div class="search-form-two">
         <form action="map.html" method="GET">
-
             <input 
                 type="search" 
                 name="q"
                 placeholder="Cari UMKM..."
                 required
             >
-
             <button type="submit">
                 <i class="icon-search"></i>
             </button>
-
         </form>
+    </div>
+
+    <!-- Search Icon Mobile -->
+    <label for="idx-search-toggle" class="search-icon-mobile-idx" aria-label="Cari UMKM">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+        </svg>
+    </label>
+
+    <!-- Hamburger -->
+    <div class="mobile-nav-toggler">
+        <img src="assets/images/icons/icon-bar-2.png" alt="">
     </div>
 </div>
 <!--End Header Upper-->
@@ -1281,18 +1285,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<!-- Search Mobile — Checkbox CSS System -->
+<input type="checkbox" id="idx-search-toggle" style="display:none!important;position:absolute;opacity:0;pointer-events:none;">
+
+<div id="idxSearchPopup">
+    <div class="idx-search-inner">
+        <label for="idx-search-toggle" class="idx-close-btn">✕</label>
+        <div class="idx-search-title">Cari UMKM</div>
+        <form action="map.html" method="GET">
+            <input type="search" name="q" placeholder="Ketik nama UMKM..." autocomplete="off">
+            <button type="submit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+    <label for="idx-search-toggle" style="position:fixed;inset:0;z-index:-1;cursor:default;"></label>
+</div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
