@@ -26,8 +26,6 @@
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
-<script src="assets/js/kategori-slider.js"></script>
-
 <body>
 
 <div class="page-wrapper">
@@ -1221,14 +1219,15 @@
 <script src="assets/js/jquery.ajaxchimp.min.js"></script>
 <script src="assets/js/parallax-scroll.js"></script>
 
+<script src="assets/js/kategori-slider.js"></script>
 <script src="assets/js/script.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const forms = document.querySelectorAll('.search-form-two form');
-    const inputs = document.querySelectorAll('input[name="q"]');
-
-    if (!forms.length) return;
+    // ✅ FIX 1: Tangkap SEMUA form yang punya input[name="q"]
+    // Termasuk: .search-form-two (desktop & sticky) + #idxSearchPopup (mobile popup)
+    const allSearchForms = document.querySelectorAll('form:has(input[name="q"])');
 
     const kategoriList = [
         "Kuliner",
@@ -1246,35 +1245,35 @@ document.addEventListener("DOMContentLoaded", function () {
         ) || null;
     }
 
+    // ✅ FIX 2: buildURL pakai path relatif agar aman di semua environment
     function buildURL(keyword, kategori) {
-        const url = new URL(window.location.origin + "/map.html");
+        const params = new URLSearchParams();
 
         if (kategori) {
-            url.searchParams.set("kategori", kategori);
+            params.set("kategori", kategori);
         } else if (keyword) {
-            url.searchParams.set("q", keyword);
+            params.set("q", keyword);
         }
 
-        return url;
+        return "map.html?" + params.toString();
     }
 
     function handleSearch(value) {
         const keyword = value.toLowerCase().trim();
-        const kategori = detectKategori(keyword);
+        if (!keyword) return;
 
+        const kategori = detectKategori(keyword);
         const url = buildURL(keyword, kategori);
 
-        window.location.href = url.toString();
+        window.location.href = url;
     }
 
-    // 🔥 LOOP SEMUA FORM (INI KUNCINYA)
-    forms.forEach((form, index) => {
+    // ✅ FIX 3: Loop semua form tanpa guard yang memblokir
+    allSearchForms.forEach(function (form) {
 
         const input = form.querySelector('input[name="q"]');
-
         if (!input) return;
 
-        // submit handler
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             handleSearch(input.value);

@@ -80,6 +80,7 @@
     <link href="assets/css/color.css" rel="stylesheet">
 
     
+    <script src="assets/js/chatbot-widget.js"></script>
 
     <!-- =========================================
          FONT AWESOME
@@ -3123,19 +3124,15 @@ setTimeout(updateDashboard, 1500);
     </script>
 
     <!-- =========================================
-         SEARCH ENGINE
+         SEARCH ENGINE (FIXED - semua form & input)
     ========================================== -->
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
 
-            const input =
-                document.querySelector('input[name="q"]');
-
-            const form =
-                document.querySelector('.search-form-two form');
-
-            if (!input || !form) return;
+            // ✅ FIX: Tangkap SEMUA form yang punya input[name="q"]
+            // Termasuk desktop (.search-form-two) + mobile popup (#searchPopupMobile)
+            const allForms = document.querySelectorAll('form:has(input[name="q"])');
 
             const kategoriList = [
                 "Kuliner",
@@ -3148,94 +3145,59 @@ setTimeout(updateDashboard, 1500);
             ];
 
             function detectKategori(keyword) {
-
                 return kategoriList.find(k =>
                     keyword.includes(k.toLowerCase())
                 ) || null;
-
             }
 
             function updateURL(keyword, kategori) {
-
                 const url = new URL(window.location);
-
                 if (kategori) {
-
                     url.searchParams.set("kategori", kategori);
                     url.searchParams.delete("q");
-
                 } else if (keyword) {
-
                     url.searchParams.set("q", keyword);
                     url.searchParams.delete("kategori");
-
                 } else {
-
                     url.searchParams.delete("q");
                     url.searchParams.delete("kategori");
-
                 }
-
                 return url;
-
             }
 
-            input.addEventListener("input", function () {
-
-                const keyword =
-                    input.value.toLowerCase().trim();
-
-                const kategori =
-                    detectKategori(keyword);
-
-                const url =
-                    updateURL(keyword, kategori);
-
-                window.history.replaceState({}, "", url);
-
-                applyFilter();
-
+            // ✅ FIX: Sync nilai dari URL ke SEMUA input[name="q"]
+            const params = new URLSearchParams(window.location.search);
+            const qVal = params.get("q");
+            document.querySelectorAll('input[name="q"]').forEach(function(inp) {
+                if (qVal) inp.value = qVal;
             });
 
-            form.addEventListener("submit", function (e) {
+            // ✅ FIX: Attach listener ke desktop input (live filter saat mengetik)
+            const desktopInput = document.querySelector('.search-form-two input[name="q"]');
+            if (desktopInput) {
+                desktopInput.addEventListener("input", function () {
+                    const keyword = desktopInput.value.toLowerCase().trim();
+                    const kategori = detectKategori(keyword);
+                    const url = updateURL(keyword, kategori);
+                    window.history.replaceState({}, "", url);
+                    applyFilter();
+                });
+            }
 
-                e.preventDefault();
+            // ✅ FIX: Attach submit ke SEMUA form (desktop + mobile popup)
+            allForms.forEach(function(form) {
+                var inp = form.querySelector('input[name="q"]');
+                if (!inp) return;
 
-                const keyword =
-                    input.value.toLowerCase().trim();
-
-                const kategori =
-                    detectKategori(keyword);
-
-                const url =
-                    updateURL(keyword, kategori);
-
-                window.location.href = url.toString();
-
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const keyword = inp.value.toLowerCase().trim();
+                    const kategori = detectKategori(keyword);
+                    const url = updateURL(keyword, kategori);
+                    // Kalau dari mobile popup, langsung navigate (reload dgn filter baru)
+                    window.location.href = url.toString();
+                });
             });
-
-        });
-
-    </script>
-
-    <!-- =========================================
-         SEARCH SYNC
-    ========================================== -->
-    <script>
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const input =
-                document.querySelector('input[name="q"]');
-
-            if (!input) return;
-
-            const params =
-                new URLSearchParams(window.location.search);
-
-            const q = params.get("q");
-
-            if (q) input.value = q;
 
         });
 
